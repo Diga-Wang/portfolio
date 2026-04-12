@@ -1,811 +1,727 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ruosu Wang - Management & Operations Consultant</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-      background: #ffffff;
-      color: #1a1a1a;
-      line-height: 1.6;
-    }
-    
-    .wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    header {
-      padding: 4rem 2rem 2rem;
-      text-align: center;
-      border-bottom: 1px solid #e5e5e5;
-    }
-    
-    header h1 {
-      font-size: 28px;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
-    }
-    
-    .role {
-      font-size: 16px;
-      color: #666666;
-      margin-bottom: 0.75rem;
-    }
-    
-    .subtitle {
-      font-size: 14px;
-      color: #999999;
-      margin-bottom: 2rem;
-    }
-    
-    .nav-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      padding: 0 2rem 2rem;
-    }
-    
-    .nav-tabs button {
-      background: none;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 14px;
-      cursor: pointer;
-      color: #666666;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
-      font-weight: 500;
-    }
-    
-    .nav-tabs button.active {
-      color: #1a1a1a;
-      border-bottom-color: #1a1a1a;
-    }
-    
-    .nav-tabs button:hover {
-      color: #1a1a1a;
-    }
-    
-    .content {
-      padding: 0 2rem 4rem;
-    }
-    
-    .section {
-      display: none;
-    }
-    
-    .section.active {
-      display: block;
-    }
-    
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-      margin-bottom: 3rem;
-    }
-    
-    .intro-text {
-      font-size: 16px;
-      line-height: 1.8;
-    }
-    
-    .intro-text p {
-      margin-bottom: 1.5rem;
-    }
-    
-    .intro-text strong {
-      font-weight: 500;
-    }
-    
-    .intro-highlights {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    
-    .highlight-box {
-      background: #f5f5f5;
-      padding: 1.5rem;
-      border-left: 3px solid #1a1a1a;
-      border-radius: 0;
-    }
-    
-    .highlight-box h3 {
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
-    
-    .highlight-box p {
-      font-size: 13px;
-      color: #666666;
-      line-height: 1.6;
-    }
-    
-    .case-studies {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    
-    .case-card {
-      background: #ffffff;
-      border: 1px solid #e5e5e5;
-      padding: 0;
-      overflow: hidden;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .case-card:hover {
-      border-color: #1a1a1a;
-      transform: translateY(-4px);
-    }
-    
-    .case-header {
-      padding: 2rem;
-      border-bottom: 1px solid #e5e5e5;
-    }
-    
-    .case-header h3 {
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
-    
-    .case-tags {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-    
-    .case-tag {
-      display: inline-block;
-      background: #f5f5f5;
-      color: #666666;
-      font-size: 12px;
-      padding: 0.25rem 0.75rem;
-      border-radius: 4px;
-    }
-    
-    .case-body {
-      padding: 2rem;
-      display: none;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-    
-    .case-card.expanded .case-body {
-      display: block;
-      max-height: 500px;
-    }
-    
-    .case-body h4 {
-      font-size: 13px;
-      font-weight: 500;
-      color: #1a1a1a;
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    .case-body h4:first-child {
-      margin-top: 0;
-    }
-    
-    .case-body p {
-      font-size: 14px;
-      color: #666666;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-    
-    .case-body ul {
-      margin-left: 1.5rem;
-      font-size: 14px;
-      color: #666666;
-      line-height: 1.8;
-    }
-    
-    .case-body li {
-      margin-bottom: 0.5rem;
-    }
-    
-    .impact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #e5e5e5;
-    }
-    
-    .impact-item {
-      text-align: center;
-    }
-    
-    .impact-number {
-      font-size: 24px;
-      font-weight: 500;
-      color: #1a1a1a;
-    }
-    
-    .impact-label {
-      font-size: 12px;
-      color: #999999;
-      margin-top: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    .skills-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    
-    .skill-group {
-      background: #f5f5f5;
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid #e5e5e5;
-    }
-    
-    .skill-group h3 {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 1rem;
-    }
-    
-    .skill-group p {
-      font-size: 14px;
-      color: #666666;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-    
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    
-    .skill-tag {
-      background: #ffffff;
-      color: #666666;
-      padding: 0.4rem 0.8rem;
-      font-size: 13px;
-      border-radius: 12px;
-      border: 1px solid #e5e5e5;
-    }
-    
-    .education-timeline {
-      margin-bottom: 3rem;
-    }
-    
-    .edu-item {
-      padding-left: 2rem;
-      margin-bottom: 2.5rem;
-      position: relative;
-    }
-    
-    .edu-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.25rem;
-      width: 10px;
-      height: 10px;
-      background: #1a1a1a;
-      border-radius: 50%;
-    }
-    
-    .edu-item::after {
-      content: '';
-      position: absolute;
-      left: 4px;
-      top: 10px;
-      width: 2px;
-      height: calc(100% + 2rem);
-      background: #e5e5e5;
-    }
-    
-    .edu-item:last-child::after {
-      display: none;
-    }
-    
-    .edu-item h3 {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-    }
-    
-    .degree {
-      font-size: 14px;
-      color: #666666;
-      margin-bottom: 0.25rem;
-    }
-    
-    .school {
-      font-size: 14px;
-      color: #666666;
-    }
-    
-    .year {
-      font-size: 12px;
-      color: #999999;
-      margin-top: 0.5rem;
-    }
-    
-    .contact-section {
-      text-align: center;
-      padding: 3rem 2rem;
-      border-top: 1px solid #e5e5e5;
-    }
-    
-    .contact-section h2 {
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-    }
-    
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    
-    .contact-links a {
-      text-decoration: none;
-      font-size: 14px;
-      color: #1a1a1a;
-      border: 1px solid #e5e5e5;
-      padding: 0.75rem 1.5rem;
-      border-radius: 4px;
-      transition: all 0.2s;
-    }
-    
-    .contact-links a:hover {
-      background: #f5f5f5;
-      border-color: #1a1a1a;
-    }
-    
-    @media (max-width: 768px) {
-      .intro-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      header {
-        padding: 2rem 1rem 1.5rem;
-      }
-      .case-studies {
-        grid-template-columns: 1fr;
-      }
-      .nav-tabs {
-        padding: 0 1rem 2rem;
-      }
-      .content {
-        padding: 0 1rem 2rem;
-      }
-      .skills-section {
-        grid-template-columns: 1fr;
-      }
-      .impact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王若素 - Ruosu Wang | 运营管理 & 数据分析</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 导航栏 */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        nav button:hover {
+            color: #667eea;
+        }
+
+        nav button.active {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+        }
+
+        /* 主内容区 */
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 首页 */
+        .hero {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #667eea;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* 关于我 */
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .about-content h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .about-content h3 {
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-card {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* AI 知识库 */
+        .ai-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .ai-container h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+
+        .chat-box {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            word-wrap: break-word;
+        }
+
+        .message.ai .message-content {
+            background: #667eea;
+            color: white;
+        }
+
+        .message.user .message-content {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .chat-input button {
+            padding: 12px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .chat-input button:hover {
+            background: #5568d3;
+        }
+
+        /* 留言板 */
+        .messages-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .messages-container h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        .messages-list {
+            margin-top: 40px;
+        }
+
+        .message-item {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .message-item .author {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .message-item .content {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .message-item .time {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .about-content,
+            .ai-container,
+            .messages-container {
+                padding: 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .message-content {
+                max-width: 90%;
+            }
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-  <div class="wrapper">
-    <header>
-      <h1>RUOSU WANG</h1>
-      <p class="role">Management & Operations Consultant</p>
-      <p class="subtitle">Strategy | Research | Digital Transformation</p>
-    </header>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav>
+            <div class="logo">Ruosu Wang</div>
+            <ul>
+                <li><button class="nav-btn active" data-section="home">首页</button></li>
+                <li><button class="nav-btn" data-section="about">关于我</button></li>
+                <li><button class="nav-btn" data-section="ai">AI助手</button></li>
+                <li><button class="nav-btn" data-section="messages">留言板</button></li>
+            </ul>
+        </nav>
 
-    <div class="nav-tabs">
-      <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
-      <button class="tab-btn" onclick="switchTab('cases')">Case studies</button>
-      <button class="tab-btn" onclick="switchTab('expertise')">Expertise</button>
-      <button class="tab-btn" onclick="switchTab('education')">Education</button>
+        <!-- 首页 -->
+        <div id="home" class="section active">
+            <div class="hero">
+                <h1>王若素</h1>
+                <p>运营管理 | 财务分析 | 流程优化 | 项目管理</p>
+                <div class="tags">
+                    <span class="tag">📊 数据分析</span>
+                    <span class="tag">🌍 国际背景</span>
+                    <span class="tag">💼 MBA候选人</span>
+                    <span class="tag">🎯 流程优化</span>
+                </div>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="document.querySelector('[data-section=about]').click()">了解更多</button>
+                    <button class="btn btn-secondary" onclick="document.querySelector('[data-section=ai]').click()">与我交流</button>
+                </div>
+                <p style="margin-top: 30px; font-size: 14px; color: #999;">
+                    📍 寻求外企运营管理 / 数据分析职位<br>
+                    🎓 CUHK硕士 | 四川大学MBA在读
+                </p>
+            </div>
+        </div>
+
+        <!-- 关于我 -->
+        <div id="about" class="section">
+            <div class="about-content">
+                <h2>关于我</h2>
+                
+                <h3>职业背景</h3>
+                <p>我是一名跨学科背景的运营管理专业人士，拥有香港中文大学城市设计硕士学位，目前于四川大学攻读MBA。我在建筑设计、教育运营和大型基建项目中积累了丰富的实战经验，特别擅长财务管理、流程优化和跨部门协调。</p>
+
+                <h3>核心能力</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h4>💰 财务 & 运营</h4>
+                        <p>独立管理RMB 2,100万年度工资系统，设计4套标准化流程，建立财务对账模型</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>📊 数据分析</h4>
+                        <p>熟练使用Excel进行数据建模、透视表、高级公式；应用AI工具进行数据清洗和自动化</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>🎯 流程优化</h4>
+                        <p>梳理复杂业务流程，建立可量化的制度和SOP，将定性协作转变为可追踪的流程</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>🌐 跨文化沟通</h4>
+                        <p>具有国际教育背景，流利英文（IELTS 6.0），能有效进行跨部门和跨文化协调</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>🤖 技术应用</h4>
+                        <p>实际应用Claude、GLM等AI工具进行文档起草、数据处理和知识库管理</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>📈 项目管理</h4>
+                        <p>有大型基建项目、教育项目的全生命周期管理经验，善于进度跟进和问题闭环</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">教育背景</h3>
+                <p><strong>四川大学</strong> - 工商管理硕士（MBA）<br>在读，2024.09 - 2026.06</p>
+                <p><strong>香港中文大学</strong> - 建筑学硕士（城市设计方向）<br>2020 - 2021</p>
+                <p><strong>西北工业大学</strong> - 建筑学学士<br>2014 - 2019</p>
+
+                <h3>为什么选择外企？</h3>
+                <p>我追求一个健康的工作环境，在那里我能够：</p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>✅ 在正常工作时间内做高质量的工作</li>
+                    <li>✅ 通过完整的假期和午休来维持身心健康</li>
+                    <li>✅ 在尊重和公平的环境中成长</li>
+                    <li>✅ 用数据和流程优化为公司创造真实价值</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- AI 知识库 -->
+        <div id="ai" class="section">
+            <div class="ai-container">
+                <h2>🤖 与我交流（AI助手）</h2>
+                <p style="margin-bottom: 20px; color: #666;">问我任何关于我的背景、经验或能力的问题。AI助手会根据我的经历为您解答。</p>
+                
+                <div class="chat-box">
+                    <div class="chat-messages" id="chatMessages"></div>
+                </div>
+
+                <div class="chat-input">
+                    <input type="text" id="userInput" placeholder="请输入您的问题..." onkeypress="handleKeyPress(event)">
+                    <button onclick="sendMessage()">发送</button>
+                </div>
+
+                <p style="margin-top: 15px; font-size: 12px; color: #999;">
+                    💡 提示：试试问 "你的工作经验是什么？" 或 "你为什么转行？" 或 "你的英文水平如何？"
+                </p>
+            </div>
+        </div>
+
+        <!-- 留言板 -->
+        <div id="messages" class="section">
+            <div class="messages-container">
+                <h2>📝 留言板</h2>
+                <p style="margin-bottom: 30px; color: #666;">如果您有想对我说的话或者想了解更多，欢迎留言！我会尽快回复。</p>
+
+                <form onsubmit="submitMessage(event)">
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">留言内容</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">提交留言</button>
+                </form>
+
+                <div class="messages-list" id="messagesList"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 Ruosu Wang | 王若素 | <a href="mailto:15991630126@163.com" style="color: white;">15991630126@163.com</a></p>
+        </footer>
     </div>
 
-    <div class="content">
-      <section id="overview" class="section active">
-        <div class="intro-grid">
-          <div class="intro-text">
-            <p>I am a consultant and researcher with dual expertise in <strong>operations optimization</strong> and <strong>strategic research</strong>. My work bridges infrastructure management, business development, and digital transformation—helping organizations move from process chaos to data-driven excellence.</p>
-            <p>With a background spanning urban design, financial compliance, and content strategy, I bring cross-disciplinary perspectives to complex challenges. I have managed multi-million RMB transactions, built organizational systems from scratch, and conducted original research that informs business decisions.</p>
-            <p>Currently, I work independently as an <strong>Academic Research Consultant</strong>, advising graduate researchers and scholars on methodology, while maintaining strategic interests in organizational transformation and the wellness industry.</p>
-          </div>
-          <div class="intro-highlights">
-            <div class="highlight-box">
-              <h3>Core competency</h3>
-              <p>Translating operational chaos into standardized, data-driven systems</p>
-            </div>
-            <div class="highlight-box">
-              <h3>Research focus</h3>
-              <p>Methodology design, data governance, and research-driven consulting</p>
-            </div>
-            <div class="highlight-box">
-              <h3>Industry experience</h3>
-              <p>Infrastructure, construction, education, architecture, business development</p>
-            </div>
-            <div class="highlight-box">
-              <h3>Languages</h3>
-              <p>Fluent in English and Mandarin; conversational Cantonese</p>
-            </div>
-          </div>
-        </div>
-      </section>
+    <script>
+        // 导航切换
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const sectionId = this.dataset.section;
+                
+                // 隐藏所有section
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                
+                // 移除所有nav按钮的active类
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                
+                // 显示选中section并高亮nav按钮
+                document.getElementById(sectionId).classList.add('active');
+                this.classList.add('active');
+            });
+        });
 
-      <section id="cases" class="section">
-        <div class="case-studies">
-          <div class="case-card" onclick="toggleCase(this)">
-            <div class="case-header">
-              <h3>Labor cost audit & reconciliation</h3>
-              <div class="case-tags">
-                <span class="case-tag">Financial management</span>
-                <span class="case-tag">Compliance</span>
-                <span class="case-tag">Infrastructure</span>
-              </div>
-            </div>
-            <div class="case-body">
-              <h4>Context</h4>
-              <p>Large-scale railway infrastructure project with 13 specialized labor teams and payroll accounts exceeding RMB 21M. Manual reconciliation processes were error-prone and created audit risks.</p>
-              <h4>Challenge</h4>
-              <p>High-frequency financial settlements across multiple teams, complex tax implications, and pressure to maintain zero-error compliance in a time-sensitive environment.</p>
-              <h4>Approach</h4>
-              <ul>
-                <li>Engineered a dynamic reconciliation model integrating multiple data sources</li>
-                <li>Built logical verification frameworks to catch discrepancies pre-audit</li>
-                <li>Standardized reporting processes for cross-departmental transparency</li>
-              </ul>
-              <h4>Impact</h4>
-              <div class="impact-grid">
-                <div class="impact-item">
-                  <div class="impact-number">100%</div>
-                  <div class="impact-label">Accuracy rate</div>
-                </div>
-                <div class="impact-item">
-                  <div class="impact-number">RMB 21M</div>
-                  <div class="impact-label">Managed payroll</div>
-                </div>
-                <div class="impact-item">
-                  <div class="impact-number">0</div>
-                  <div class="impact-label">Errors in audits</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        // AI 知识库数据
+        const knowledgeBase = {
+            '你的工作经验是什么': '我在建筑设计、教育运营和大型基建项目中都有实战经验。目前在中铁十五局负责财务管理，独立管理RMB 2,100万的年度工资系统，设计了4套标准化流程。之前在深圳华森建筑担任助理建筑师，参与了大型项目的施工图设计。',
+            
+            '你为什么要转行到咨询或运营': '我意识到我真正喜欢的是流程优化、数据分析和跨部门协调，而不仅仅是建筑设计。外企的运营管理职位能更好地利用我的分析能力和系统思维，同时提供更健康的工作环境。',
+            
+            '你的英文水平如何': '我的IELTS成绩是6.0，能够进行日常工作沟通和文档阅读。我在香港中文大学（CUHK）学习期间提高了英文水平，目前可以进行基本的英文邮件往来和会议沟通。',
+            
+            '你为什么离开建筑行业': '虽然我在建筑设计中获得了宝贵经验，但我发现我更热衷于问题解决、流程优化和数据驱动的决策。建筑项目相对固定，而我想在更动态、更需要分析和创新的领域工作。',
+            
+            '你想要什么样的工作': '我寻求在外企担任运营管理、数据分析或项目协调职位。我更看重工作环境的健康、工作与生活的平衡，以及能够充分利用我分析和系统思维能力的机会。',
+            
+            '你的核心竞争力是什么': '我的核心竞争力包括：(1) 财务流程优化能力 - 能将复杂流程转变为可量化的制度；(2) 数据分析 - 熟练使用Excel和AI工具；(3) 跨学科背景 - 建筑、教育、基建经验让我有独特视角；(4) 国际化背景 - CUHK硕士、MBA在读、英文沟通能力。',
+            
+            '你为什么选择外企': '外企提供更健康的工作环境、更规范的劳动条件和更好的工作与生活平衡。我优先考虑的是恢复身心健康，然后才是职业发展。外企通常能提供这个基础。',
+            
+            '你有什么特别的项目经验': '我最自豪的是在中铁十五局的工作：独立管理2100万元的年度工资系统，建立了自动化对账模型，将传统的口头协作转变为可追踪的制度。这展示了我的数据管理和流程优化能力。',
+            
+            '你如何使用ai工具': '我实际应用Claude和GLM进行数据清洗、文档起草和知识库管理。在我的工作中，我使用AI来自动生成报表、整理数据，显著提升了工作效率。',
+            
+            '你的mba学习内容': '我的MBA课程涵盖商业战略、财务管理、市场营销等。这让我更系统地理解业务运作，补充了我之前的实战经验，使我能更好地从战略角度思考问题。',
 
-          <div class="case-card" onclick="toggleCase(this)">
-            <div class="case-header">
-              <h3>Invoice audit & tax risk mitigation</h3>
-              <div class="case-tags">
-                <span class="case-tag">Compliance</span>
-                <span class="case-tag">Risk management</span>
-                <span class="case-tag">Finance</span>
-              </div>
-            </div>
-            <div class="case-body">
-              <h4>Context</h4>
-              <p>Organization processing high-volume commercial invoices with potential tax and legal liabilities from improper documentation or missing verification.</p>
-              <h4>Challenge</h4>
-              <p>RMB 800k in invoices required rigorous scrutiny. Weak verification systems risked exposing the organization to penalties and audit failures.</p>
-              <h4>Approach</h4>
-              <ul>
-                <li>Developed a tiered logical verification framework</li>
-                <li>Cross-referenced invoices against contracts, payments, and compliance rules</li>
-                <li>Built institutional memory through documentation and training</li>
-              </ul>
-              <h4>Impact</h4>
-              <div class="impact-grid">
-                <div class="impact-item">
-                  <div class="impact-number">RMB 800k</div>
-                  <div class="impact-label">Audited invoices</div>
-                </div>
-                <div class="impact-item">
-                  <div class="impact-number">0</div>
-                  <div class="impact-label">Failed audits</div>
-                </div>
-                <div class="impact-item">
-                  <div class="impact-number">100%</div>
-                  <div class="impact-label">Compliance rate</div>
-                </div>
-              </div>
-            </div>
-          </div>
+            '默认': '感谢您的提问！我是Ruosu Wang。我是一名跨学科背景的运营管理专业人士，拥有CUHK硕士学位和MBA在读身份。我特别擅长财务流程优化、数据分析和跨部门协调。\n\n您可以问我：\n• 我的工作经验是什么\n• 为什么选择转行或外企\n• 我的核心竞争力\n• 具体的项目经历\n\n或者您也可以在下面的留言板留言！'
+        };
 
-          <div class="case-card" onclick="toggleCase(this)">
-            <div class="case-header">
-              <h3>Workflow standardization & SOP development</h3>
-              <div class="case-tags">
-                <span class="case-tag">Process design</span>
-                <span class="case-tag">Organizational change</span>
-                <span class="case-tag">Operations</span>
-              </div>
-            </div>
-            <div class="case-body">
-              <h4>Context</h4>
-              <p>Organization operating on informal, relationship-based workflows with inconsistent quality and no institutional continuity. Knowledge was siloed and processes were opaque.</p>
-              <h4>Challenge</h4>
-              <p>Shift from "relationship-driven" to "process-driven" operations without disrupting ongoing work. Cross-departmental coordination was ad-hoc and inefficient.</p>
-              <h4>Approach</h4>
-              <ul>
-                <li>Mapped existing workflows and identified bottlenecks</li>
-                <li>Designed 4 core SOPs covering finance, compliance, operations, and coordination</li>
-                <li>Implemented digital tracking tools for real-time transparency</li>
-                <li>Trained teams and embedded processes through documentation</li>
-              </ul>
-              <h4>Impact</h4>
-              <div class="impact-grid">
-                <div class="impact-item">
-                  <div class="impact-number">4</div>
-                  <div class="impact-label">SOPs created</div>
-                </div>
-                <div class="impact-item">
-                  <div class="impact-number">30%</div>
-                  <div class="impact-label">Coordination improvement</div>
-                </div>
-                <div class="impact-item">
-                  <div class="impact-number">1</div>
-                  <div class="impact-label">Source of truth</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        function findAnswer(question) {
+            const lowerQuestion = question.toLowerCase();
+            
+            // 精确匹配
+            for (let key in knowledgeBase) {
+                if (lowerQuestion.includes(key.toLowerCase())) {
+                    return knowledgeBase[key];
+                }
+            }
+            
+            // 模糊匹配
+            const keywords = ['工作', '经验', '英文', '建筑', '转行', '外企', '咨询', '能力', '项目', 'ai', '助手'];
+            for (let keyword of keywords) {
+                if (lowerQuestion.includes(keyword)) {
+                    return knowledgeBase['默认'];
+                }
+            }
+            
+            return knowledgeBase['默认'];
+        }
 
-          <div class="case-card" onclick="toggleCase(this)">
-            <div class="case-header">
-              <h3>Content strategy & business development</h3>
-              <div class="case-tags">
-                <span class="case-tag">Strategy</span>
-                <span class="case-tag">Marketing</span>
-                <span class="case-tag">Business development</span>
-              </div>
-            </div>
-            <div class="case-body">
-              <h4>Context</h4>
-              <p>Education company seeking to expand market presence and secure institutional partnerships in the healthcare sector.</p>
-              <h4>Challenge</h4>
-              <p>Weak market positioning. Need to demonstrate institutional credibility and educational impact to attract large contracts. Competitive bidding required compelling strategy.</p>
-              <h4>Approach</h4>
-              <ul>
-                <li>Developed content strategy showcasing educational value and market differentiation</li>
-                <li>Spearheaded end-to-end bidding process for TCM health education partnership</li>
-                <li>Created high-impact video and social media campaigns</li>
-                <li>Refined database governance to improve data integrity</li>
-              </ul>
-              <h4>Impact</h4>
-              <div class="impact-grid">
-                <div class="impact-item">
-                  <div class="impact-number">3-year</div>
-                  <div class="impact-label">Partnership secured</div>
-                </div>
-                <div class="impact-item">
-                  <div class="impact-number">5000+</div>
-                  <div class="impact-label">Video views</div>
-                </div>
-                <div class="impact-item">
-                  <div class="impact-number">50%</div>
-                  <div class="impact-label">Error reduction</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            const messagesDiv = document.getElementById('chatMessages');
+            
+            // 显示用户消息
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerHTML = `<div class="message-content">${escapeHtml(message)}</div>`;
+            messagesDiv.appendChild(userMsg);
+            
+            input.value = '';
+            
+            // 延迟显示AI回复
+            setTimeout(() => {
+                const answer = findAnswer(message);
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'message ai';
+                aiMsg.innerHTML = `<div class="message-content">${answer}</div>`;
+                messagesDiv.appendChild(aiMsg);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 500);
+        }
 
-          <div class="case-card" onclick="toggleCase(this)">
-            <div class="case-header">
-              <h3>Academic research consulting</h3>
-              <div class="case-tags">
-                <span class="case-tag">Research methodology</span>
-                <span class="case-tag">Advisory</span>
-                <span class="case-tag">Education</span>
-              </div>
-            </div>
-            <div class="case-body">
-              <h4>Context</h4>
-              <p>Graduate researchers and scholars across multiple disciplines need support in translating research ideas into rigorous, publishable work.</p>
-              <h4>Challenge</h4>
-              <p>Researchers often lack clarity on methodology, data governance, and analytical frameworks. Weak research design leads to wasted time and unconvincing results.</p>
-              <h4>Approach</h4>
-              <ul>
-                <li>Provide independent methodology consulting across qualitative and quantitative research</li>
-                <li>Guide research frame design and research question formulation</li>
-                <li>Support questionnaire design and survey quality assurance</li>
-                <li>Advise on data processing tools and analytical strategies</li>
-                <li>Use AI tools to enhance literature review efficiency and theoretical analysis</li>
-              </ul>
-              <h4>Impact</h4>
-              <p>Enabled 20+ researchers across multiple disciplines to design stronger studies, improve research clarity, and accelerate completion timelines. Clients report significantly higher confidence in their research validity and methodological rigor.</p>
-            </div>
-          </div>
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
 
-          <div class="case-card" onclick="toggleCase(this)">
-            <div class="case-header">
-              <h3>Urban design & environmental consulting</h3>
-              <div class="case-tags">
-                <span class="case-tag">Design</span>
-                <span class="case-tag">Architecture</span>
-                <span class="case-tag">Sustainability</span>
-              </div>
-            </div>
-            <div class="case-body">
-              <h4>Context</h4>
-              <p>Architecture firm executing landmark design projects ranging from financial centers to social infrastructure (nursing homes, elderly universities, kindergartens).</p>
-              <h4>Challenge</h4>
-              <p>Balancing aesthetic vision with technical compliance, sustainability requirements, and social responsibility. Projects required cross-functional coordination and rigorous quality control.</p>
-              <h4>Approach</h4>
-              <ul>
-                <li>Led technical governance on landmark projects (e.g., Shenyang Baoneng Global Financial Center)</li>
-                <li>Designed energy-efficient systems for high-end resort hotels in Hainan</li>
-                <li>Managed architectural lead role on community infrastructure projects</li>
-                <li>Integrated environmental and UX principles into spatial design</li>
-              </ul>
-              <h4>Impact</h4>
-              <div class="impact-grid">
-                <div class="impact-item">
-                  <div class="impact-number">3rd prize</div>
-                  <div class="impact-label">Green building research</div>
-                </div>
-                <div class="impact-item">
-                  <div class="impact-number">5+</div>
-                  <div class="impact-label">Landmark projects</div>
-                </div>
-                <div class="impact-item">
-                  <div class="impact-number">100%</div>
-                  <div class="impact-label">Compliance rate</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        // 留言板
+        function submitMessage(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // 保存到localStorage
+            let messages = JSON.parse(localStorage.getItem('messages') || '[]');
+            messages.push({
+                name: name,
+                email: email,
+                content: message,
+                time: new Date().toLocaleString('zh-CN')
+            });
+            localStorage.setItem('messages', JSON.stringify(messages));
+            
+            // 显示留言
+            displayMessages();
+            
+            // 清空表单
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+            
+            alert('感谢您的留言！我会尽快回复。');
+        }
 
-      <section id="expertise" class="section">
-        <div class="skills-section">
-          <div class="skill-group">
-            <h3>Operations & process</h3>
-            <p>Designing and optimizing workflows, building SOPs, implementing digital systems, and creating data-driven transparency across organizations.</p>
-            <div class="skill-list">
-              <span class="skill-tag">SOP development</span>
-              <span class="skill-tag">Process mapping</span>
-              <span class="skill-tag">Digital tools</span>
-              <span class="skill-tag">Quality control</span>
-              <span class="skill-tag">Data governance</span>
-            </div>
-          </div>
+        function displayMessages() {
+            const messages = JSON.parse(localStorage.getItem('messages') || '[]');
+            const messagesList = document.getElementById('messagesList');
+            messagesList.innerHTML = '';
+            
+            messages.reverse().forEach(msg => {
+                const msgItem = document.createElement('div');
+                msgItem.className = 'message-item';
+                msgItem.innerHTML = `
+                    <div class="author">${escapeHtml(msg.name)} (${escapeHtml(msg.email)})</div>
+                    <div class="content">${escapeHtml(msg.content)}</div>
+                    <div class="time">${msg.time}</div>
+                `;
+                messagesList.appendChild(msgItem);
+            });
+        }
 
-          <div class="skill-group">
-            <h3>Financial & compliance</h3>
-            <p>Managing large-scale transactions, conducting audits, mitigating financial and legal risks, and ensuring regulatory compliance in complex environments.</p>
-            <div class="skill-list">
-              <span class="skill-tag">Payroll management</span>
-              <span class="skill-tag">Audit & verification</span>
-              <span class="skill-tag">Risk assessment</span>
-              <span class="skill-tag">Invoice processing</span>
-              <span class="skill-tag">Compliance frameworks</span>
-            </div>
-          </div>
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
 
-          <div class="skill-group">
-            <h3>Research & methodology</h3>
-            <p>Designing rigorous research frameworks, conducting qualitative and quantitative analysis, and translating research into actionable insights.</p>
-            <div class="skill-list">
-              <span class="skill-tag">Research design</span>
-              <span class="skill-tag">Questionnaire development</span>
-              <span class="skill-tag">Data analysis</span>
-              <span class="skill-tag">Literature review</span>
-              <span class="skill-tag">Qualitative methods</span>
-            </div>
-          </div>
+        // 页面加载时显示留言
+        displayMessages();
 
-          <div class="skill-group">
-            <h3>Strategy & development</h3>
-            <p>Formulating business strategies, managing bidding processes, securing partnerships, and driving market expansion and institutional growth.</p>
-            <div class="skill-list">
-              <span class="skill-tag">Business development</span>
-              <span class="skill-tag">Strategic bidding</span>
-              <span class="skill-tag">Content strategy</span>
-              <span class="skill-tag">Partnership building</span>
-              <span class="skill-tag">Market positioning</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <h3>Design & architecture</h3>
-            <p>Translating design concepts into technical specifications, managing complex projects, and integrating sustainability and UX principles into built environments.</p>
-            <div class="skill-list">
-              <span class="skill-tag">Technical governance</span>
-              <span class="skill-tag">Construction drawings</span>
-              <span class="skill-tag">Project coordination</span>
-              <span class="skill-tag">Sustainability design</span>
-              <span class="skill-tag">Spatial analysis</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <h3>Tools & platforms</h3>
-            <p>Proficiency across Microsoft Office, Adobe Creative Suite, AI-assisted research tools, and emerging technologies for organizational transformation.</p>
-            <div class="skill-list">
-              <span class="skill-tag">Excel / Data tools</span>
-              <span class="skill-tag">Adobe Photoshop</span>
-              <span class="skill-tag">WeChat marketing</span>
-              <span class="skill-tag">AI research tools</span>
-              <span class="skill-tag">Digital platforms</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="education" class="section">
-        <div class="education-timeline">
-          <div class="edu-item">
-            <h3>Master of Business Administration</h3>
-            <div class="degree">Business Administration</div>
-            <div class="school">Sichuan University</div>
-            <div class="year">2024 – 2026</div>
-          </div>
-          <div class="edu-item">
-            <h3>Master of Architecture</h3>
-            <div class="degree">Urban Design</div>
-            <div class="school">The Chinese University of Hong Kong (CUHK)</div>
-            <div class="year">2020 – 2021</div>
-          </div>
-          <div class="edu-item">
-            <h3>Relevant coursework</h3>
-            <div class="degree">Environmental & Urban Economic | Urban Design Studio | Urban History & Theory | Advanced Research Methods</div>
-            <div class="year">Architecture, design, and strategy</div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <div class="contact-section">
-      <h2>Get in touch</h2>
-      <div class="contact-links">
-        <a href="mailto:wang010445@gmail.com">Email</a>
-        <a href="www.linkedin.com/in/ruosu-wang-716203214" target="_blank">LinkedIn</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function switchTab(tabName) {
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(tabName).classList.add('active');
-      event.target.classList.add('active');
-    }
-
-    function toggleCase(card) {
-      document.querySelectorAll('.case-card.expanded').forEach(c => {
-        if (c !== card) c.classList.remove('expanded');
-      });
-      card.classList.toggle('expanded');
-    }
-  </script>
+        // 初始化欢迎消息
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const messagesDiv = document.getElementById('chatMessages');
+                const welcomeMsg = document.createElement('div');
+                welcomeMsg.className = 'message ai';
+                welcomeMsg.innerHTML = `<div class="message-content">👋 你好！我是Ruosu Wang的AI助手。请问有什么我可以帮助的吗？</div>`;
+                messagesDiv.appendChild(welcomeMsg);
+            }, 300);
+        });
+    </script>
 </body>
 </html>
