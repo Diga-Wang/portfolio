@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruosu Wang - Management & Operations Consultant</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    header {
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    
+    header h1 {
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+    
+    .role {
+      font-size: 16px;
+      color: #666666;
+      margin-bottom: 0.75rem;
+    }
+    
+    .subtitle {
+      font-size: 14px;
+      color: #999999;
+      margin-bottom: 2rem;
+    }
+    
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      padding: 0 2rem 2rem;
+    }
+    
+    .nav-tabs button {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 14px;
+      cursor: pointer;
+      color: #666666;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+    
+    .nav-tabs button.active {
+      color: #1a1a1a;
+      border-bottom-color: #1a1a1a;
+    }
+    
+    .nav-tabs button:hover {
+      color: #1a1a1a;
+    }
+    
+    .content {
+      padding: 0 2rem 4rem;
+    }
+    
+    .section {
+      display: none;
+    }
+    
+    .section.active {
+      display: block;
+    }
+    
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+    
+    .intro-text {
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    
+    .intro-text p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .intro-text strong {
+      font-weight: 500;
+    }
+    
+    .intro-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .highlight-box {
+      background: #f5f5f5;
+      padding: 1.5rem;
+      border-left: 3px solid #1a1a1a;
+      border-radius: 0;
+    }
+    
+    .highlight-box h3 {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .highlight-box p {
+      font-size: 13px;
+      color: #666666;
+      line-height: 1.6;
+    }
+    
+    .case-studies {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .case-card {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      padding: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .case-card:hover {
+      border-color: #1a1a1a;
+      transform: translateY(-4px);
+    }
+    
+    .case-header {
+      padding: 2rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    
+    .case-header h3 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .case-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    
+    .case-tag {
+      display: inline-block;
+      background: #f5f5f5;
+      color: #666666;
+      font-size: 12px;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+    }
+    
+    .case-body {
+      padding: 2rem;
+      display: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .case-card.expanded .case-body {
+      display: block;
+      max-height: 500px;
+    }
+    
+    .case-body h4 {
+      font-size: 13px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .case-body h4:first-child {
+      margin-top: 0;
+    }
+    
+    .case-body p {
+      font-size: 14px;
+      color: #666666;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    .case-body ul {
+      margin-left: 1.5rem;
+      font-size: 14px;
+      color: #666666;
+      line-height: 1.8;
+    }
+    
+    .case-body li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e5e5e5;
+    }
+    
+    .impact-item {
+      text-align: center;
+    }
+    
+    .impact-number {
+      font-size: 24px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+    
+    .impact-label {
+      font-size: 12px;
+      color: #999999;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .skills-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .skill-group {
+      background: #f5f5f5;
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid #e5e5e5;
+    }
+    
+    .skill-group h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    
+    .skill-group p {
+      font-size: 14px;
+      color: #666666;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .skill-tag {
+      background: #ffffff;
+      color: #666666;
+      padding: 0.4rem 0.8rem;
+      font-size: 13px;
+      border-radius: 12px;
+      border: 1px solid #e5e5e5;
+    }
+    
+    .education-timeline {
+      margin-bottom: 3rem;
+    }
+    
+    .edu-item {
+      padding-left: 2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    
+    .edu-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.25rem;
+      width: 10px;
+      height: 10px;
+      background: #1a1a1a;
+      border-radius: 50%;
+    }
+    
+    .edu-item::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 10px;
+      width: 2px;
+      height: calc(100% + 2rem);
+      background: #e5e5e5;
+    }
+    
+    .edu-item:last-child::after {
+      display: none;
+    }
+    
+    .edu-item h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    
+    .degree {
+      font-size: 14px;
+      color: #666666;
+      margin-bottom: 0.25rem;
+    }
+    
+    .school {
+      font-size: 14px;
+      color: #666666;
+    }
+    
+    .year {
+      font-size: 12px;
+      color: #999999;
+      margin-top: 0.5rem;
+    }
+    
+    .contact-section {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid #e5e5e5;
+    }
+    
+    .contact-section h2 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .contact-links a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #1a1a1a;
+      border: 1px solid #e5e5e5;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    
+    .contact-links a:hover {
+      background: #f5f5f5;
+      border-color: #1a1a1a;
+    }
+    
+    @media (max-width: 768px) {
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      header {
+        padding: 2rem 1rem 1.5rem;
+      }
+      .case-studies {
+        grid-template-columns: 1fr;
+      }
+      .nav-tabs {
+        padding: 0 1rem 2rem;
+      }
+      .content {
+        padding: 0 1rem 2rem;
+      }
+      .skills-section {
+        grid-template-columns: 1fr;
+      }
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>RUOSU WANG</h1>
+      <p class="role">Management & Operations Consultant</p>
+      <p class="subtitle">Strategy | Research | Digital Transformation</p>
+    </header>
+
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
+      <button class="tab-btn" onclick="switchTab('cases')">Case studies</button>
+      <button class="tab-btn" onclick="switchTab('expertise')">Expertise</button>
+      <button class="tab-btn" onclick="switchTab('education')">Education</button>
+    </div>
+
+    <div class="content">
+      <section id="overview" class="section active">
+        <div class="intro-grid">
+          <div class="intro-text">
+            <p>I am a consultant and researcher with dual expertise in <strong>operations optimization</strong> and <strong>strategic research</strong>. My work bridges infrastructure management, business development, and digital transformation—helping organizations move from process chaos to data-driven excellence.</p>
+            <p>With a background spanning urban design, financial compliance, and content strategy, I bring cross-disciplinary perspectives to complex challenges. I have managed multi-million RMB transactions, built organizational systems from scratch, and conducted original research that informs business decisions.</p>
+            <p>Currently, I work independently as an <strong>Academic Research Consultant</strong>, advising graduate researchers and scholars on methodology, while maintaining strategic interests in organizational transformation and the wellness industry.</p>
+          </div>
+          <div class="intro-highlights">
+            <div class="highlight-box">
+              <h3>Core competency</h3>
+              <p>Translating operational chaos into standardized, data-driven systems</p>
+            </div>
+            <div class="highlight-box">
+              <h3>Research focus</h3>
+              <p>Methodology design, data governance, and research-driven consulting</p>
+            </div>
+            <div class="highlight-box">
+              <h3>Industry experience</h3>
+              <p>Infrastructure, construction, education, architecture, business development</p>
+            </div>
+            <div class="highlight-box">
+              <h3>Languages</h3>
+              <p>Fluent in English and Mandarin; conversational Cantonese</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cases" class="section">
+        <div class="case-studies">
+          <div class="case-card" onclick="toggleCase(this)">
+            <div class="case-header">
+              <h3>Labor cost audit & reconciliation</h3>
+              <div class="case-tags">
+                <span class="case-tag">Financial management</span>
+                <span class="case-tag">Compliance</span>
+                <span class="case-tag">Infrastructure</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <h4>Context</h4>
+              <p>Large-scale railway infrastructure project with 13 specialized labor teams and payroll accounts exceeding RMB 21M. Manual reconciliation processes were error-prone and created audit risks.</p>
+              <h4>Challenge</h4>
+              <p>High-frequency financial settlements across multiple teams, complex tax implications, and pressure to maintain zero-error compliance in a time-sensitive environment.</p>
+              <h4>Approach</h4>
+              <ul>
+                <li>Engineered a dynamic reconciliation model integrating multiple data sources</li>
+                <li>Built logical verification frameworks to catch discrepancies pre-audit</li>
+                <li>Standardized reporting processes for cross-departmental transparency</li>
+              </ul>
+              <h4>Impact</h4>
+              <div class="impact-grid">
+                <div class="impact-item">
+                  <div class="impact-number">100%</div>
+                  <div class="impact-label">Accuracy rate</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">RMB 21M</div>
+                  <div class="impact-label">Managed payroll</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">0</div>
+                  <div class="impact-label">Errors in audits</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card" onclick="toggleCase(this)">
+            <div class="case-header">
+              <h3>Invoice audit & tax risk mitigation</h3>
+              <div class="case-tags">
+                <span class="case-tag">Compliance</span>
+                <span class="case-tag">Risk management</span>
+                <span class="case-tag">Finance</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <h4>Context</h4>
+              <p>Organization processing high-volume commercial invoices with potential tax and legal liabilities from improper documentation or missing verification.</p>
+              <h4>Challenge</h4>
+              <p>RMB 800k in invoices required rigorous scrutiny. Weak verification systems risked exposing the organization to penalties and audit failures.</p>
+              <h4>Approach</h4>
+              <ul>
+                <li>Developed a tiered logical verification framework</li>
+                <li>Cross-referenced invoices against contracts, payments, and compliance rules</li>
+                <li>Built institutional memory through documentation and training</li>
+              </ul>
+              <h4>Impact</h4>
+              <div class="impact-grid">
+                <div class="impact-item">
+                  <div class="impact-number">RMB 800k</div>
+                  <div class="impact-label">Audited invoices</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">0</div>
+                  <div class="impact-label">Failed audits</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">100%</div>
+                  <div class="impact-label">Compliance rate</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card" onclick="toggleCase(this)">
+            <div class="case-header">
+              <h3>Workflow standardization & SOP development</h3>
+              <div class="case-tags">
+                <span class="case-tag">Process design</span>
+                <span class="case-tag">Organizational change</span>
+                <span class="case-tag">Operations</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <h4>Context</h4>
+              <p>Organization operating on informal, relationship-based workflows with inconsistent quality and no institutional continuity. Knowledge was siloed and processes were opaque.</p>
+              <h4>Challenge</h4>
+              <p>Shift from "relationship-driven" to "process-driven" operations without disrupting ongoing work. Cross-departmental coordination was ad-hoc and inefficient.</p>
+              <h4>Approach</h4>
+              <ul>
+                <li>Mapped existing workflows and identified bottlenecks</li>
+                <li>Designed 4 core SOPs covering finance, compliance, operations, and coordination</li>
+                <li>Implemented digital tracking tools for real-time transparency</li>
+                <li>Trained teams and embedded processes through documentation</li>
+              </ul>
+              <h4>Impact</h4>
+              <div class="impact-grid">
+                <div class="impact-item">
+                  <div class="impact-number">4</div>
+                  <div class="impact-label">SOPs created</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">30%</div>
+                  <div class="impact-label">Coordination improvement</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">1</div>
+                  <div class="impact-label">Source of truth</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card" onclick="toggleCase(this)">
+            <div class="case-header">
+              <h3>Content strategy & business development</h3>
+              <div class="case-tags">
+                <span class="case-tag">Strategy</span>
+                <span class="case-tag">Marketing</span>
+                <span class="case-tag">Business development</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <h4>Context</h4>
+              <p>Education company seeking to expand market presence and secure institutional partnerships in the healthcare sector.</p>
+              <h4>Challenge</h4>
+              <p>Weak market positioning. Need to demonstrate institutional credibility and educational impact to attract large contracts. Competitive bidding required compelling strategy.</p>
+              <h4>Approach</h4>
+              <ul>
+                <li>Developed content strategy showcasing educational value and market differentiation</li>
+                <li>Spearheaded end-to-end bidding process for TCM health education partnership</li>
+                <li>Created high-impact video and social media campaigns</li>
+                <li>Refined database governance to improve data integrity</li>
+              </ul>
+              <h4>Impact</h4>
+              <div class="impact-grid">
+                <div class="impact-item">
+                  <div class="impact-number">3-year</div>
+                  <div class="impact-label">Partnership secured</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">5000+</div>
+                  <div class="impact-label">Video views</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">50%</div>
+                  <div class="impact-label">Error reduction</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card" onclick="toggleCase(this)">
+            <div class="case-header">
+              <h3>Academic research consulting</h3>
+              <div class="case-tags">
+                <span class="case-tag">Research methodology</span>
+                <span class="case-tag">Advisory</span>
+                <span class="case-tag">Education</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <h4>Context</h4>
+              <p>Graduate researchers and scholars across multiple disciplines need support in translating research ideas into rigorous, publishable work.</p>
+              <h4>Challenge</h4>
+              <p>Researchers often lack clarity on methodology, data governance, and analytical frameworks. Weak research design leads to wasted time and unconvincing results.</p>
+              <h4>Approach</h4>
+              <ul>
+                <li>Provide independent methodology consulting across qualitative and quantitative research</li>
+                <li>Guide research frame design and research question formulation</li>
+                <li>Support questionnaire design and survey quality assurance</li>
+                <li>Advise on data processing tools and analytical strategies</li>
+                <li>Use AI tools to enhance literature review efficiency and theoretical analysis</li>
+              </ul>
+              <h4>Impact</h4>
+              <p>Enabled 20+ researchers across multiple disciplines to design stronger studies, improve research clarity, and accelerate completion timelines. Clients report significantly higher confidence in their research validity and methodological rigor.</p>
+            </div>
+          </div>
+
+          <div class="case-card" onclick="toggleCase(this)">
+            <div class="case-header">
+              <h3>Urban design & environmental consulting</h3>
+              <div class="case-tags">
+                <span class="case-tag">Design</span>
+                <span class="case-tag">Architecture</span>
+                <span class="case-tag">Sustainability</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <h4>Context</h4>
+              <p>Architecture firm executing landmark design projects ranging from financial centers to social infrastructure (nursing homes, elderly universities, kindergartens).</p>
+              <h4>Challenge</h4>
+              <p>Balancing aesthetic vision with technical compliance, sustainability requirements, and social responsibility. Projects required cross-functional coordination and rigorous quality control.</p>
+              <h4>Approach</h4>
+              <ul>
+                <li>Led technical governance on landmark projects (e.g., Shenyang Baoneng Global Financial Center)</li>
+                <li>Designed energy-efficient systems for high-end resort hotels in Hainan</li>
+                <li>Managed architectural lead role on community infrastructure projects</li>
+                <li>Integrated environmental and UX principles into spatial design</li>
+              </ul>
+              <h4>Impact</h4>
+              <div class="impact-grid">
+                <div class="impact-item">
+                  <div class="impact-number">3rd prize</div>
+                  <div class="impact-label">Green building research</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">5+</div>
+                  <div class="impact-label">Landmark projects</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">100%</div>
+                  <div class="impact-label">Compliance rate</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="expertise" class="section">
+        <div class="skills-section">
+          <div class="skill-group">
+            <h3>Operations & process</h3>
+            <p>Designing and optimizing workflows, building SOPs, implementing digital systems, and creating data-driven transparency across organizations.</p>
+            <div class="skill-list">
+              <span class="skill-tag">SOP development</span>
+              <span class="skill-tag">Process mapping</span>
+              <span class="skill-tag">Digital tools</span>
+              <span class="skill-tag">Quality control</span>
+              <span class="skill-tag">Data governance</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Financial & compliance</h3>
+            <p>Managing large-scale transactions, conducting audits, mitigating financial and legal risks, and ensuring regulatory compliance in complex environments.</p>
+            <div class="skill-list">
+              <span class="skill-tag">Payroll management</span>
+              <span class="skill-tag">Audit & verification</span>
+              <span class="skill-tag">Risk assessment</span>
+              <span class="skill-tag">Invoice processing</span>
+              <span class="skill-tag">Compliance frameworks</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Research & methodology</h3>
+            <p>Designing rigorous research frameworks, conducting qualitative and quantitative analysis, and translating research into actionable insights.</p>
+            <div class="skill-list">
+              <span class="skill-tag">Research design</span>
+              <span class="skill-tag">Questionnaire development</span>
+              <span class="skill-tag">Data analysis</span>
+              <span class="skill-tag">Literature review</span>
+              <span class="skill-tag">Qualitative methods</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Strategy & development</h3>
+            <p>Formulating business strategies, managing bidding processes, securing partnerships, and driving market expansion and institutional growth.</p>
+            <div class="skill-list">
+              <span class="skill-tag">Business development</span>
+              <span class="skill-tag">Strategic bidding</span>
+              <span class="skill-tag">Content strategy</span>
+              <span class="skill-tag">Partnership building</span>
+              <span class="skill-tag">Market positioning</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Design & architecture</h3>
+            <p>Translating design concepts into technical specifications, managing complex projects, and integrating sustainability and UX principles into built environments.</p>
+            <div class="skill-list">
+              <span class="skill-tag">Technical governance</span>
+              <span class="skill-tag">Construction drawings</span>
+              <span class="skill-tag">Project coordination</span>
+              <span class="skill-tag">Sustainability design</span>
+              <span class="skill-tag">Spatial analysis</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Tools & platforms</h3>
+            <p>Proficiency across Microsoft Office, Adobe Creative Suite, AI-assisted research tools, and emerging technologies for organizational transformation.</p>
+            <div class="skill-list">
+              <span class="skill-tag">Excel / Data tools</span>
+              <span class="skill-tag">Adobe Photoshop</span>
+              <span class="skill-tag">WeChat marketing</span>
+              <span class="skill-tag">AI research tools</span>
+              <span class="skill-tag">Digital platforms</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="section">
+        <div class="education-timeline">
+          <div class="edu-item">
+            <h3>Master of Business Administration</h3>
+            <div class="degree">Business Administration</div>
+            <div class="school">Sichuan University</div>
+            <div class="year">2024 – 2026</div>
+          </div>
+          <div class="edu-item">
+            <h3>Master of Architecture</h3>
+            <div class="degree">Urban Design</div>
+            <div class="school">The Chinese University of Hong Kong (CUHK)</div>
+            <div class="year">2020 – 2021</div>
+          </div>
+          <div class="edu-item">
+            <h3>Relevant coursework</h3>
+            <div class="degree">Environmental & Urban Economic | Urban Design Studio | Urban History & Theory | Advanced Research Methods</div>
+            <div class="year">Architecture, design, and strategy</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="contact-section">
+      <h2>Get in touch</h2>
+      <div class="contact-links">
+        <a href="mailto:your.email@example.com">Email</a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+        <a href="https://wechat.com" target="_blank">WeChat</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchTab(tabName) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabName).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    function toggleCase(card) {
+      document.querySelectorAll('.case-card.expanded').forEach(c => {
+        if (c !== card) c.classList.remove('expanded');
+      });
+      card.classList.toggle('expanded');
+    }
+  </script>
+</body>
+</html>
