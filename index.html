@@ -1,34 +1,1265 @@
-<div class="services-grid">
-    <div class="service-card">
-        <h4>🤖 AI工作流设计</h4>
-        <ul>
-            <li>多模型编排策略：GPT负责广度、Claude负责深度、Gemini负责校验</li>
-            <li>标准化交付系统：从需求理解到内容输出的全链路设计</li>
-            <li>人机协作流程：在AI易出错环节保留人工控制权</li>
-        </ul>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王若素 · AI产品运营 · 作品集</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+        :root {
+            --white: #ffffff;
+            --black: #0a0a0a;
+            --navy: #0d1b2a;
+            --navy-mid: #1a2e42;
+            --navy-light: #243b55;
+            --cold-gray-dark: #2c3340;
+            --cold-gray-mid: #4a5568;
+            --cold-gray: #8896a5;
+            --light-gray: #c8d0d8;
+            --very-light-gray: #e8ecf0;
+            --bg: #f4f6f8;
+            --bg-card: #ffffff;
+            --accent-blue: #1a56a0;
+            --accent-blue-light: #2d6bc4;
+            --accent-orange: #c96a0a;
+            --accent-green: #1a6b3a;
+            --border: #d0d8e0;
+            --border-light: #e8ecf0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--navy);
+            line-height: 1.6;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 64px;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-left: -32px;
+            margin-right: -32px;
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+
+        .logo {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--navy);
+            letter-spacing: 0.04em;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: var(--cold-gray-mid);
+            cursor: pointer;
+            font-size: 13px;
+            font-family: inherit;
+            transition: color 0.2s;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            padding: 4px 0;
+            border-bottom: 1px solid transparent;
+        }
+
+        nav button:hover { color: var(--navy); }
+        nav button.active {
+            color: var(--navy);
+            border-bottom-color: var(--accent-blue);
+            font-weight: 500;
+        }
+
+        /* ── SECTIONS ── */
+        .section { display: none; animation: fadeIn 0.3s; padding-top: 8px; }
+        .section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── HERO ── */
+        .hero { margin-bottom: 80px; padding-top: 24px; }
+
+        .hero-eyebrow {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--cold-gray);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 1px;
+            background: var(--cold-gray);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--navy);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 strong {
+            font-weight: 600;
+            display: block;
+        }
+
+        .hero .subtitle {
+            font-size: 16px;
+            color: var(--cold-gray-mid);
+            margin-bottom: 24px;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: var(--cold-gray-mid);
+            margin-bottom: 12px;
+            max-width: 620px;
+            line-height: 1.75;
+        }
+
+        .hero-divider {
+            width: 40px;
+            height: 2px;
+            background: var(--accent-blue);
+            margin: 32px 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 36px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 11px 28px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: inherit;
+            transition: all 0.2s;
+            border: none;
+            letter-spacing: 0.03em;
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--navy-mid);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--navy);
+            color: var(--navy);
+        }
+
+        .btn-secondary:hover {
+            background: var(--very-light-gray);
+        }
+
+        /* ── CONTENT ── */
+        .content { max-width: 860px; }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 300;
+            color: var(--navy);
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header-line {
+            font-size: 11px;
+            color: var(--cold-gray);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--navy);
+        }
+
+        p {
+            color: var(--cold-gray-mid);
+            margin-bottom: 12px;
+            line-height: 1.75;
+        }
+
+        /* ── SKILLS ── */
+        .skills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 24px 0;
+        }
+
+        .skill-tag {
+            background: var(--white);
+            color: var(--cold-gray-dark);
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        /* ── CASES GRID ── */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1px;
+            margin-bottom: 60px;
+            border: 1px solid var(--border);
+            background: var(--border);
+        }
+
+        .case-card {
+            background: var(--white);
+            padding: 28px;
+            transition: background 0.2s;
+        }
+
+        .case-card:hover { background: var(--very-light-gray); }
+
+        .case-card .tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 14px;
+        }
+
+        .case-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--navy);
+            line-height: 1.4;
+        }
+
+        .case-card p {
+            font-size: 13px;
+            color: var(--cold-gray-mid);
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .case-card .metric {
+            color: var(--accent-blue);
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        /* ── SERVICES ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1px;
+            margin-bottom: 60px;
+            border: 1px solid var(--border);
+            background: var(--border);
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 28px;
+        }
+
+        .service-card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--navy);
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .service-card ul { list-style: none; padding: 0; }
+
+        .service-card li {
+            color: var(--cold-gray-mid);
+            margin-bottom: 8px;
+            font-size: 13px;
+            padding-left: 16px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .service-card li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--border);
+            font-size: 11px;
+            top: 1px;
+        }
+
+        /* ── AI CHAT ── */
+        .ai-container {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 28px;
+            margin-bottom: 60px;
+        }
+
+        .chat-box {
+            border: 1px solid var(--border-light);
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            overflow: hidden;
+            background: var(--bg);
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .message { margin-bottom: 14px; display: flex; gap: 10px; }
+        .message.user { justify-content: flex-end; }
+
+        .message-content {
+            max-width: 70%;
+            padding: 10px 14px;
+            word-wrap: break-word;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .message.ai .message-content {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .message.user .message-content {
+            background: var(--white);
+            color: var(--navy);
+            border: 1px solid var(--border);
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 8px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--border-light);
+            background: var(--white);
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--navy);
+            font-size: 13px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .chat-input input:focus { border-color: var(--navy); }
+
+        .chat-input button {
+            padding: 10px 20px;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 13px;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
+
+        .chat-input button:hover { background: var(--navy-mid); }
+
+        /* ── CONTACT FORM ── */
+        .form-group { margin-bottom: 18px; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--navy);
+            font-weight: 500;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--navy);
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group textarea { resize: vertical; min-height: 120px; }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--navy);
+        }
+
+        .messages-list { margin-top: 36px; }
+
+        .message-item {
+            background: var(--white);
+            border-left: 2px solid var(--accent-blue);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+        }
+
+        .message-item .author {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .message-item .content {
+            color: var(--cold-gray-mid);
+            margin-bottom: 6px;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .message-item .time { font-size: 11px; color: var(--light-gray); }
+
+        /* ── PORTFOLIO ── */
+        .portfolio-intro {
+            font-size: 15px;
+            color: var(--cold-gray-mid);
+            max-width: 600px;
+            line-height: 1.75;
+            margin-bottom: 40px;
+        }
+
+        .portfolio-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 60px;
+            border: 1px solid var(--border);
+        }
+
+        .portfolio-entry {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .portfolio-entry:last-child { border-bottom: none; }
+
+        .portfolio-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 28px 32px;
+            cursor: pointer;
+            gap: 24px;
+        }
+
+        .entry-index {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--light-gray);
+            letter-spacing: 0.08em;
+            flex-shrink: 0;
+            margin-top: 2px;
+            width: 24px;
+        }
+
+        .entry-meta { flex: 1; }
+
+        .entry-tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+        }
+
+        .entry-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--navy);
+            margin-bottom: 8px;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+        }
+
+        .entry-summary {
+            font-size: 13px;
+            color: var(--cold-gray);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .entry-toggle {
+            font-size: 18px;
+            color: var(--light-gray);
+            transition: all 0.25s;
+            flex-shrink: 0;
+            margin-top: 4px;
+            font-weight: 300;
+        }
+
+        .portfolio-entry.open { background: var(--bg); }
+        .portfolio-entry.open .entry-toggle {
+            transform: rotate(45deg);
+            color: var(--accent-blue);
+        }
+
+        .portfolio-entry-body {
+            display: none;
+            padding: 0 32px 32px 80px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .portfolio-entry.open .portfolio-entry-body {
+            display: block;
+            animation: fadeIn 0.25s;
+        }
+
+        .pf-section-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--cold-gray);
+            margin: 28px 0 10px;
+        }
+
+        .pf-text {
+            font-size: 14px;
+            color: var(--cold-gray-mid);
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        .pf-origin-box {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-left: 2px solid var(--navy);
+            padding: 20px 24px;
+        }
+
+        .pf-origin-box p {
+            font-size: 14px;
+            color: var(--cold-gray-mid);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .pf-highlight {
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        .pf-insight {
+            border-left: 2px solid var(--accent-blue);
+            padding: 12px 18px;
+            background: var(--white);
+        }
+
+        .pf-insight p {
+            font-size: 14px;
+            color: var(--cold-gray-mid);
+            line-height: 1.75;
+            margin: 0;
+        }
+
+        .pf-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--border-light);
+            border: 1px solid var(--border-light);
+        }
+
+        .pf-step {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 16px 20px;
+            background: var(--white);
+        }
+
+        .pf-step-num {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            width: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            letter-spacing: 0.05em;
+        }
+
+        .pf-step-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .pf-step-desc {
+            font-size: 13px;
+            color: var(--cold-gray);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .pf-divider {
+            border: none;
+            border-top: 1px solid var(--border-light);
+            margin: 24px 0;
+        }
+
+        .pf-meta-row {
+            display: flex;
+            gap: 0;
+            flex-wrap: wrap;
+            border: 1px solid var(--border-light);
+        }
+
+        .pf-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 14px 20px;
+            border-right: 1px solid var(--border-light);
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .pf-meta-item:last-child { border-right: none; }
+
+        .pf-meta-label {
+            font-size: 10px;
+            color: var(--cold-gray);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .pf-meta-value {
+            font-size: 13px;
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        .coming-soon-card {
+            background: var(--white);
+            border: 1px dashed var(--border);
+            padding: 24px 32px;
+            color: var(--light-gray);
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 0;
+            margin-top: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        footer p {
+            color: var(--light-gray);
+            font-size: 12px;
+            margin: 0;
+            letter-spacing: 0.04em;
+        }
+
+        footer a { color: var(--accent-blue); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            nav { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+            .hero h1 { font-size: 32px; }
+            nav ul { gap: 16px; }
+            .cta-buttons { flex-direction: column; }
+            .btn { width: 100%; text-align: center; }
+            .cases-grid, .services-grid { grid-template-columns: 1fr; }
+            .message-content { max-width: 88%; }
+            h2 { font-size: 24px; }
+            .portfolio-entry-header { padding: 20px; }
+            .portfolio-entry-body { padding: 0 20px 24px 20px; }
+            .entry-title { font-size: 16px; }
+            .entry-index { display: none; }
+            .pf-meta-row { flex-direction: column; }
+            .pf-meta-item { border-right: none; border-bottom: 1px solid var(--border-light); }
+            .pf-meta-item:last-child { border-bottom: none; }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">王若素 · AI产品运营</div>
+            <ul>
+                <li><button class="nav-btn active" data-section="home">首页</button></li>
+                <li><button class="nav-btn" data-section="about">关于</button></li>
+                <li><button class="nav-btn" data-section="portfolio">作品集</button></li>
+                <li><button class="nav-btn" data-section="cases">案例</button></li>
+                <li><button class="nav-btn" data-section="services">方法论</button></li>
+                <li><button class="nav-btn" data-section="ai">AI助手</button></li>
+                <li><button class="nav-btn" data-section="contact">联系</button></li>
+            </ul>
+        </nav>
+
+        <!-- ===================== 首页 ===================== -->
+        <div id="home" class="section active">
+            <div class="hero">
+                <div class="hero-eyebrow">AI产品运营 · 作品集</div>
+                <h1><strong>用AI工作流解决复杂信息整合问题</strong>用户增长 · 内容策略 · 数据驱动</h1>
+                <div class="hero-divider"></div>
+                <div class="skills" style="margin-bottom: 20px;">
+                    <span class="skill-tag">📊 20+ 跨学科项目交付</span>
+                    <span class="skill-tag">📈 8.4万 单篇内容触达</span>
+                    <span class="skill-tag">⭐ 1.98% 用户收藏率（同类均值0.8%）</span>
+                </div>
+                <p>建筑学背景 · CUHK硕士 · MBA在读。擅长将复杂AI能力翻译为小白可操作的方案，通过数据驱动用户激活与留存。</p>
+                <div class="skills">
+                    <span class="skill-tag">🤖 AI工作流设计</span>
+                    <span class="skill-tag">📊 用户增长策略</span>
+                    <span class="skill-tag">🔬 跨领域整合</span>
+                    <span class="skill-tag">📈 数据驱动决策</span>
+                    <span class="skill-tag">🌍 双语 · 国际背景</span>
+                </div>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="document.querySelector('[data-section=portfolio]').click()">查看作品集</button>
+                    <button class="btn btn-secondary" onclick="document.querySelector('[data-section=ai]').click()">AI助手</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== 关于 ===================== -->
+        <div id="about" class="section">
+            <div class="content">
+                <h2>关于我</h2>
+                <h3>跨界，不是转行，是能力的迁移</h3>
+                <p>我是一名从建筑设计跨界到AI产品运营的实践者。</p>
+                <ul style="color: var(--cold-gray-mid); line-height: 2; padding-left: 20px; margin-bottom: 24px;">
+                    <li><strong>建筑学</strong>教会我：如何在复杂约束条件下做出系统性的设计决策。</li>
+                    <li><strong>城市设计（CUHK硕士）</strong>教会我：如何理解人的行为模式和空间需求。</li>
+                    <li><strong>MBA（川大在读）</strong>教会我：如何用商业视角审视产品价值和增长路径。</li>
+                    <li><strong>AI工具</strong>教会我：如何将复杂能力翻译为普通人能用的方案。</li>
+                </ul>
+                <h3>我擅长三件事</h3>
+                <div class="skills" style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+                    <span class="skill-tag" style="font-size: 14px; padding: 10px 18px; width: 100%; box-sizing: border-box; text-align: left;">1. AI工作流设计 · 将多模型能力编排为标准化交付系统，降低用户使用门槛</span>
+                    <span class="skill-tag" style="font-size: 14px; padding: 10px 18px; width: 100%; box-sizing: border-box; text-align: left;">2. 用户增长策略 · 通过内容驱动用户激活与留存，用数据验证产品迭代方向</span>
+                    <span class="skill-tag" style="font-size: 14px; padding: 10px 18px; width: 100%; box-sizing: border-box; text-align: left;">3. 跨领域整合 · 在复杂信息中提取核心框架，快速输出可落地解决方案</span>
+                </div>
+                <h3 style="margin-top: 40px;">工作经历</h3>
+                <p><strong>AI知识交付产品（独立负责）</strong> · 2024.09 – 至今<br>
+                独立设计AI工作流系统，协同Claude/GPT/Gemini/GLM多模型，完成跨10+学科20+项目交付，交付周期压缩80%。</p>
+                <p><strong>行政专员（跨部门流程优化）</strong> · 中铁十五局 · 2024.05 – 至今<br>
+                独立设计4套标准化SOP，协调3个部门同步推进，行政效率提升30%。审计80万+流水零差错。</p>
+                <p><strong>助理建筑师</strong> · 深圳华森建筑 · 2022.02 – 2023.06<br>
+                参与大型综合体项目施工图设计，获《华森绿色养老建筑》三等奖。</p>
+                <h3>教育背景</h3>
+                <p><strong>四川大学</strong>（985 · 211）MBA/EMBA · 2024 – 2027<br>
+                <em>研究方向：AI技术应用与用户增长策略</em></p>
+                <p><strong>香港中文大学</strong> 城市设计硕士 · 2020 – 2021</p>
+                <p><strong>西北工业大学</strong>（985 · 211）建筑学学士 · 2014 – 2019<br>
+                专业课成绩专业前10% · 2019保利杯A组金奖</p>
+                <h3>核心能力</h3>
+                <div class="skills">
+                    <span class="skill-tag">AI工作流设计</span>
+                    <span class="skill-tag">用户增长策略</span>
+                    <span class="skill-tag">数据分析</span>
+                    <span class="skill-tag">流程优化</span>
+                    <span class="skill-tag">跨部门协调</span>
+                    <span class="skill-tag">学术写作指导</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== 作品集 ===================== -->
+        <div id="portfolio" class="section">
+            <div class="content">
+                <h2>作品集</h2>
+                <p class="portfolio-intro">这里记录的是解决问题的完整过程——我看到了什么、怎么拆解的、做了哪些判断、结果如何。</p>
+
+                <div class="portfolio-list">
+
+                    <!-- 案例一：AI知识交付系统 -->
+                    <div class="portfolio-entry open" id="entry-1">
+                        <div class="portfolio-entry-header" onclick="toggleEntry('entry-1')">
+                            <div class="entry-index">01</div>
+                            <div class="entry-meta">
+                                <span class="entry-tag">AI产品 · 工作流设计</span>
+                                <div class="entry-title">AI知识交付系统：把多模型编排成标准化产品</div>
+                                <p class="entry-summary">用AI工作流解决跨学科知识整合效率低的问题。核心策略是模型分工——GPT负责广度、Claude负责深度、Gemini负责校验。交付周期从2-3周压缩至2-3天。</p>
+                            </div>
+                            <div class="entry-toggle">+</div>
+                        </div>
+                        <div class="portfolio-entry-body">
+                            <p class="pf-section-label">背景与问题</p>
+                            <div class="pf-origin-box">
+                                <p>跨学科知识整合需求激增，涉及新能源、化工、金融等不同领域。传统研究方式需要2-3周，效率低且质量不稳定——每次都要从头学习陌生学科的框架和术语。</p>
+                            </div>
+                            <hr class="pf-divider">
+                            <p class="pf-section-label">核心决策：模型分工策略</p>
+                            <div class="pf-insight">
+                                <p>关键决策是<span class="pf-highlight">按任务类型分配模型</span>，而不是简单堆叠工具：<br>
+                                <strong>GPT</strong> → 快速领域扫描，建立核心框架<br>
+                                <strong>Claude</strong> → 文献细节挖掘，深度内容分析<br>
+                                <strong>Gemini</strong> → 多源信息交叉验证，一致性校验<br>
+                                这一策略将模型能力与任务类型精准匹配，大幅提升输出质量。</p>
+                            </div>
+                            <p class="pf-section-label" style="margin-top: 24px;">标准化工作流</p>
+                            <div class="pf-steps">
+                                <div class="pf-step"><div class="pf-step-num">1</div><div><div class="pf-step-title">AI结构分析</div><p class="pf-step-desc">用GPT快速扫描领域知识，建立核心框架和关键词图谱</p></div></div>
+                                <div class="pf-step"><div class="pf-step-num">2</div><div><div class="pf-step-title">自动化文献发现</div><p class="pf-step-desc">基于框架定向检索知网 &amp; Google Scholar，获取高质量文献</p></div></div>
+                                <div class="pf-step"><div class="pf-step-num">3</div><div><div class="pf-step-title">综合研究与交付</div><p class="pf-step-desc">Claude深度分析 + Gemini交叉校验 → 输出结构化内容</p></div></div>
+                            </div>
+                            <hr class="pf-divider">
+                            <p class="pf-section-label">结果</p>
+                            <p class="pf-text">完成跨10+学科20+项目交付，交付周期从2-3周压缩至2-3天（压缩80%）。客户反馈“框架清晰、信息密度高、可直接使用”。</p>
+                            <hr class="pf-divider">
+                            <div class="pf-meta-row">
+                                <div class="pf-meta-item"><span class="pf-meta-label">交付规模</span><span class="pf-meta-value">20+ 项目 · 10+ 学科</span></div>
+                                <div class="pf-meta-item"><span class="pf-meta-label">效率提升</span><span class="pf-meta-value">2-3周 → 2-3天（压缩80%）</span></div>
+                                <div class="pf-meta-item"><span class="pf-meta-label">技术栈</span><span class="pf-meta-value">Claude · GPT · Gemini · GLM</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 案例二：小红书AI内容运营 -->
+                    <div class="portfolio-entry" id="entry-2">
+                        <div class="portfolio-entry-header" onclick="toggleEntry('entry-2')">
+                            <div class="entry-index">02</div>
+                            <div class="entry-meta">
+                                <span class="entry-tag">用户增长 · 内容策略</span>
+                                <div class="entry-title">小红书AI内容运营：从0到8.4万浏览的增长验证</div>
+                                <p class="entry-summary">解决方案导向定位，不贩卖焦虑。单篇触达8.4万用户，收藏率1.98%（同类均值0.8%），验证了"内容触达→用户收藏→持续关注"的留存路径。</p>
+                            </div>
+                            <div class="entry-toggle">+</div>
+                        </div>
+                        <div class="portfolio-entry-body">
+                            <p class="pf-section-label">背景与问题</p>
+                            <div class="pf-origin-box">
+                                <p>Claude泄露51万行代码，技术圈热点但非技术用户看不懂。需要在热点窗口期内产出普通人能理解、能操作的内容。</p>
+                            </div>
+                            <hr class="pf-divider">
+                            <p class="pf-section-label">核心决策：解决方案导向</p>
+                            <div class="pf-insight">
+                                <p>定位为<span class="pf-highlight">"解决方案导向"而非"贩卖焦虑"</span>——将复杂技术事件翻译为可操作指南，用户看完能立刻用上。这一策略与同期其他技术号形成差异化。</p>
+                            </div>
+                            <p class="pf-section-label" style="margin-top: 24px;">用户增长路径</p>
+                            <div class="pf-steps">
+                                <div class="pf-step"><div class="pf-step-num">1</div><div><div class="pf-step-title">热点捕捉</div><p class="pf-step-desc">精准踩中Claude代码泄露热点窗口</p></div></div>
+                                <div class="pf-step"><div class="pf-step-num">2</div><div><div class="pf-step-title">内容拆解</div><p class="pf-step-desc">将复杂技术事件翻译为小白可操作的指南</p></div></div>
+                                <div class="pf-step"><div class="pf-step-num">3</div><div><div class="pf-step-title">价值驱动</div><p class="pf-step-desc">用户收藏 = 认可内容价值 → 持续关注 → 留存</p></div></div>
+                            </div>
+                            <hr class="pf-divider">
+                            <p class="pf-section-label">数据结果</p>
+                            <p class="pf-text"><strong>单篇数据：</strong>8.4万浏览 · 2300+赞 · 1600+收藏 · 385评论<br>
+                            <strong>收藏率：</strong>1.98%（同类均值0.8%） · <strong>收藏/点赞比：</strong>71%<br>
+                            验证了"以价值驱动用户留存"的内容策略有效性。</p>
+                            <hr class="pf-divider">
+                            <div class="pf-meta-row">
+                                <div class="pf-meta-item"><span class="pf-meta-label">总触达</span><span class="pf-meta-value">8.4万 用户</span></div>
+                                <div class="pf-meta-item"><span class="pf-meta-label">收藏率</span><span class="pf-meta-value">1.98%（同类0.8%）</span></div>
+                                <div class="pf-meta-item"><span class="pf-meta-label">收藏/点赞比</span><span class="pf-meta-value">71%</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 案例三：流程系统化 -->
+                    <div class="portfolio-entry" id="entry-3">
+                        <div class="portfolio-entry-header" onclick="toggleEntry('entry-3')">
+                            <div class="entry-index">03</div>
+                            <div class="entry-meta">
+                                <span class="entry-tag">流程设计 · 系统化</span>
+                                <div class="entry-title">把说不清的工作，变成任何人都能接手的制度</div>
+                                <p class="entry-summary">150+员工、2,100万年度工资系统，差错率从5%降至0%。核心方法：观察实际运转 → 把隐性步骤显性化 → 用结构替代记忆。</p>
+                            </div>
+                            <div class="entry-toggle">+</div>
+                        </div>
+                        <div class="portfolio-entry-body">
+                            <p class="pf-section-label">起点</p>
+                            <div class="pf-origin-box">
+                                <p>150+员工的工资发放系统，靠三个固定模版维持运转——没有计算过程记录，没有统一的合同归档，发没发、怎么算的，全在经手人脑子里。<br><br>我重新设计了这套系统。<span class="pf-highlight">找不到来源的数据我不放心用，说不清楚的事情我不愿意经手。</span></p>
+                            </div>
+                            <hr class="pf-divider">
+                            <p class="pf-section-label">核心洞察</p>
+                            <div class="pf-insight">
+                                <p>把工作变成流程，第一步不是设计方案，而是观察——这件事实际上是怎么运转的？哪些步骤是隐性的、靠人记的？把这些显性化，才能谈得上固化和交接。</p>
+                            </div>
+                            <p class="pf-section-label" style="margin-top: 24px;">我做了什么</p>
+                            <div class="pf-steps">
+                                <div class="pf-step"><div class="pf-step-num">1</div><div><div class="pf-step-title">观察实际运转</div><p class="pf-step-desc">把所有实际发生的动作列出来——谁在什么时间做了什么、触发条件是什么、结果存在哪里。</p></div></div>
+                                <div class="pf-step"><div class="pf-step-num">2</div><div><div class="pf-step-title">设计可追溯的计算体系</div><p class="pf-step-desc">建立完整工资计算文件，所有奖金项目、计算过程在核对表里完整记录，每一分钱都有来源。</p></div></div>
+                                <div class="pf-step"><div class="pf-step-num">3</div><div><div class="pf-step-title">建立合同档案体系</div><p class="pf-step-desc">统一合同模版，每人一个文件夹，合同与人员信息对应归档，不留空缺。</p></div></div>
+                                <div class="pf-step"><div class="pf-step-num">4</div><div><div class="pf-step-title">固化触发机制</div><p class="pf-step-desc">把"什么时候做什么"从口头约定变成固定时间节点驱动，不靠人记。</p></div></div>
+                            </div>
+                            <hr class="pf-divider">
+                            <p class="pf-section-label">结果</p>
+                            <p class="pf-text">150+员工、2,100万年度工资，<span class="pf-highlight">差错率从约5%降至零</span>。更重要的是：任何人接手都能看懂、能继续跑，不依赖某一个人的记忆和习惯。</p>
+                            <hr class="pf-divider">
+                            <div class="pf-meta-row">
+                                <div class="pf-meta-item"><span class="pf-meta-label">规模</span><span class="pf-meta-value">150+ 员工 · 2,100万/年</span></div>
+                                <div class="pf-meta-item"><span class="pf-meta-label">差错率</span><span class="pf-meta-value">5% → 0%</span></div>
+                                <div class="pf-meta-item"><span class="pf-meta-label">核心方法</span><span class="pf-meta-value">观察 → 显性化 → 结构化</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== 案例 ===================== -->
+        <div id="cases" class="section">
+            <div class="content">
+                <h2>案例研究</h2>
+                <div class="cases-grid">
+                    <div class="case-card">
+                        <span class="tag">AI产品</span>
+                        <h4>AI知识交付系统</h4>
+                        <p><strong>问题：</strong>跨学科知识整合效率低，交付周期2-3周</p>
+                        <p><strong>方案：</strong>多模型分工工作流（GPT广度+Claude深度+Gemini校验）</p>
+                        <p class="metric">✓ 交付周期压缩80%（2-3周→2-3天）</p>
+                        <p class="metric">✓ 20+项目 · 10+学科</p>
+                    </div>
+                    <div class="case-card">
+                        <span class="tag">用户增长</span>
+                        <h4>小红书AI内容运营</h4>
+                        <p><strong>问题：</strong>技术内容如何触达非技术用户？</p>
+                        <p><strong>方案：</strong>解决方案导向定位，拆解复杂技术为可操作指南</p>
+                        <p class="metric">✓ 8.4万浏览 · 1600+收藏</p>
+                        <p class="metric">✓ 收藏率1.98%（同类0.8%）</p>
+                    </div>
+                    <div class="case-card">
+                        <span class="tag">流程优化</span>
+                        <h4>2,100万工资系统重构</h4>
+                        <p><strong>问题：</strong>150+员工工资发放靠口头协作，出错率高</p>
+                        <p><strong>方案：</strong>4套SOP + 可追溯计算体系 + 合同档案</p>
+                        <p class="metric">✓ 差错率 5% → 0%</p>
+                        <p class="metric">✓ 效率提升30%</p>
+                    </div>
+                    <div class="case-card">
+                        <span class="tag">研究方法</span>
+                        <h4>跨学科研究框架设计</h4>
+                        <p><strong>问题：</strong>研究者卡在"不知道本学科研究方法是什么"</p>
+                        <p><strong>方案：</strong>反向工程 + AI辅助方法适配</p>
+                        <p class="metric">✓ 覆盖8+学科</p>
+                        <p class="metric">✓ 切入新领域&lt;1个工作日</p>
+                    </div>
+                    <div class="case-card">
+                        <span class="tag">AI工具</span>
+                        <h4>文献综述工作流（防幻觉）</h4>
+                        <p><strong>问题：</strong>AI直接生成文献综述会编造假文献</p>
+                        <p><strong>方案：</strong>NotebookLM + 人工检索 + AI归纳三层隔离</p>
+                        <p class="metric">✓ 彻底杜绝AI幻觉文献</p>
+                        <p class="metric">✓ 流程可复用</p>
+                    </div>
+                    <div class="case-card">
+                        <span class="tag">项目管理</span>
+                        <h4>大型基建项目协调</h4>
+                        <p><strong>职责：</strong>财务、现场、劳务队之间的接口</p>
+                        <p><strong>工具：</strong>AI辅助数据清洗和文档起草</p>
+                        <p class="metric">✓ 沟通效率↑40%</p>
+                        <p class="metric">✓ 问题闭环时间↓30%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== 方法论（原"服务"板块，已重写） ===================== -->
+        <div id="services" class="section">
+            <div class="content">
+                <h2>方法论实践</h2>
+                <p style="margin-bottom: 32px; color: var(--cold-gray-mid);">以下是在跨学科研究与知识整合中积累的可复用方法——每一条都来自实际操作，而非理论推演。</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>🤖 AI工作流设计</h4>
+                        <ul>
+                            <li>多模型编排策略：GPT负责广度、Claude负责深度、Gemini负责校验</li>
+                            <li>标准化交付系统：从需求理解到内容输出的全链路设计</li>
+                            <li>人机协作流程：在AI易出错环节保留人工控制权</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h4>📈 用户增长与内容策略</h4>
+                        <ul>
+                            <li>解决方案导向定位：精准捕捉热点，拆解复杂内容为可操作指南</li>
+                            <li>数据驱动的增长验证：通过收藏率、转化路径优化迭代策略</li>
+                            <li>创作者社区运营：从0到1冷启动，验证用户留存路径</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h4>🔬 跨学科研究与知识整合</h4>
+                        <ul>
+                            <li>研究方法"反向工程"：从高引用论文倒推研究设计逻辑</li>
+                            <li>文献综述防幻觉流程：NotebookLM+人工检索+AI归纳三层隔离</li>
+                            <li>跨领域快速切入：覆盖8+学科，切入新领域通常不超过1个工作日</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h4>🏢 运营流程与系统化</h4>
+                        <ul>
+                            <li>SOP设计与标准化：把"靠人记"变成"靠制度跑"</li>
+                            <li>可追溯体系搭建：计算过程、合同档案、触发机制全链路闭环</li>
+                            <li>质量管控机制：双人复核+定期抽检，差错率从5%降至0%</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 工作方式段落已删除 -->
+            </div>
+        </div>
+
+        <!-- ===================== AI助手 ===================== -->
+        <div id="ai" class="section">
+            <div class="content">
+                <h2>AI助手</h2>
+                <p>问我关于AI产品运营、研究方法、工作流设计或任何其他问题。</p>
+                <div class="ai-container">
+                    <div class="chat-box">
+                        <div class="chat-messages" id="chatMessages"></div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="userInput" placeholder="请输入您的问题..." onkeypress="handleKeyPress(event)">
+                        <button onclick="sendMessage()">发送</button>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 13px; color: #666;">
+                        💡 试试问："你做过哪些AI项目？" 或 "你的用户增长策略是什么？" 或 "你怎么理解AI产品运营？"
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== 联系 ===================== -->
+        <div id="contact" class="section">
+            <div class="content">
+                <h2>留言板</h2>
+                <p>如果您有任何想法或合作机会，欢迎留言。我会尽快回复。</p>
+                <div style="background: var(--white); border: 1px solid var(--border); padding: 30px; margin-bottom: 60px;">
+                    <form onsubmit="submitMessage(event)">
+                        <div class="form-group">
+                            <label for="name">您的姓名</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">留言内容</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">提交留言</button>
+                    </form>
+                    <div class="messages-list" id="messagesList"></div>
+                </div>
+                <h3>直接联系</h3>
+                <p>📧 邮箱：<a href="mailto:15991630126@163.com" style="color: #667eea;">15991630126@163.com</a></p>
+                <p>📱 电话：+86 159 9163 0126</p>
+                <p>🔗 LinkedIn：<a href="https://linkedin.com/in/ruosu-wang-716203214" style="color: #667eea;" target="_blank">linkedin.com/in/ruosu-wang-716203214</a></p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 王若素 · AI产品运营 · 用AI工作流解决复杂信息整合问题</p>
+        </footer>
     </div>
-    <div class="service-card">
-        <h4>📈 用户增长与内容策略</h4>
-        <ul>
-            <li>解决方案导向定位：精准捕捉热点，拆解复杂内容为可操作指南</li>
-            <li>数据驱动的增长验证：通过收藏率、转化路径优化迭代策略</li>
-            <li>创作者社区运营：从0到1冷启动，验证用户留存路径</li>
-        </ul>
-    </div>
-    <div class="service-card">
-        <h4>🔬 跨学科研究与知识整合</h4>
-        <ul>
-            <li>研究方法“反向工程”：从高引用论文倒推研究设计逻辑</li>
-            <li>文献综述防幻觉流程：NotebookLM+人工检索+AI归纳三层隔离</li>
-            <li>跨领域快速切入：覆盖8+学科，切入新领域通常不超过1个工作日</li>
-        </ul>
-    </div>
-    <div class="service-card">
-        <h4>🏢 运营流程与系统化</h4>
-        <ul>
-            <li>SOP设计与标准化：把“靠人记”变成“靠制度跑”</li>
-            <li>可追溯体系搭建：计算过程、合同档案、触发机制全链路闭环</li>
-            <li>质量管控机制：双人复核+定期抽检，差错率从5%降至0%</li>
-        </ul>
-    </div>
-</div>
+
+    <script>
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const sectionId = this.dataset.section;
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.getElementById(sectionId).classList.add('active');
+                this.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        function toggleEntry(id) {
+            const entry = document.getElementById(id);
+            entry.classList.toggle('open');
+        }
+
+        const knowledgeBase = {
+            'ai项目': '我独立设计并落地了一个AI知识交付系统：将多模型（Claude/GPT/Gemini/GLM）按任务类型分工——GPT负责广度扫描，Claude负责深度分析，Gemini负责一致性校验。完成跨10+学科20+项目交付，交付周期从2-3周压缩至2-3天。另外我还运营了一个小红书AI技术账号，单篇触达8.4万用户，收藏率1.98%（同类均值0.8%）。',
+            '用户增长': '我的用户增长方法论核心是"解决方案导向"。在小红书项目中，我通过精准踩中Claude代码泄露热点，将复杂技术事件翻译为小白可操作的指南，单篇触达8.4万用户，收藏率1.98%（同类均值0.8%），验证了"内容触达→用户收藏→持续关注"的留存路径有效性。',
+            '工作流': '我设计的AI工作流核心原则是：在AI容易出错的环节把控制权交回给人。比如文献综述流程——AI做语义扩展和内容归纳，人工做文献检索和引用核查，通过NotebookLM建立隔离层，彻底杜绝AI幻觉文献。',
+            '研究方法': '我的核心方法是"反向工程"——从高引用论文倒推研究设计逻辑，而不是正向套用方法框架。曾为50+研究生提供跨学科研究指导，覆盖8+个学科领域。',
+            '跨界': '我从建筑学跨界到AI产品运营。建筑学教会我在复杂约束下做系统性决策，城市设计教会我理解人的行为模式，MBA教会我用商业视角审视产品价值，AI工具教会我把复杂能力翻译成普通人能用的方案。这不是转行，是能力的迁移。',
+            '为什么做产品': '我擅长把复杂的、说不清的东西变成结构化的、可执行的方案。AI产品运营的核心工作就是"把复杂AI能力翻译为小白能用的方案"，这是我一直在做的事情。',
+            '默认': '感谢您的提问！我是王若素，AI产品运营。我擅长AI工作流设计、用户增长策略和跨领域整合。您可以问我关于AI项目、用户增长、工作流设计或跨界经历的任何问题。'
+        };
+
+        function findAnswer(question) {
+            const lowerQuestion = question.toLowerCase();
+            for (let key in knowledgeBase) {
+                if (lowerQuestion.includes(key.toLowerCase())) {
+                    return knowledgeBase[key];
+                }
+            }
+            return knowledgeBase['默认'];
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+            if (!message) return;
+            const messagesDiv = document.getElementById('chatMessages');
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerHTML = `<div class="message-content">${escapeHtml(message)}</div>`;
+            messagesDiv.appendChild(userMsg);
+            input.value = '';
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            setTimeout(() => {
+                const answer = findAnswer(message);
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'message ai';
+                aiMsg.innerHTML = `<div class="message-content">${answer}</div>`;
+                messagesDiv.appendChild(aiMsg);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 500);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') sendMessage();
+        }
+
+        function submitMessage(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            let messages = JSON.parse(localStorage.getItem('messages') || '[]');
+            messages.push({ name, email, content: message, time: new Date().toLocaleString('zh-CN') });
+            localStorage.setItem('messages', JSON.stringify(messages));
+            displayMessages();
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+            alert('感谢您的留言！我会尽快回复。');
+        }
+
+        function displayMessages() {
+            const messages = JSON.parse(localStorage.getItem('messages') || '[]');
+            const messagesList = document.getElementById('messagesList');
+            messagesList.innerHTML = '';
+            messages.reverse().forEach(msg => {
+                const msgItem = document.createElement('div');
+                msgItem.className = 'message-item';
+                msgItem.innerHTML = `
+                    <div class="author">${escapeHtml(msg.name)}</div>
+                    <div class="content">${escapeHtml(msg.content)}</div>
+                    <div class="time">${escapeHtml(msg.email)} · ${msg.time}</div>
+                `;
+                messagesList.appendChild(msgItem);
+            });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        displayMessages();
+
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const messagesDiv = document.getElementById('chatMessages');
+                const welcomeMsg = document.createElement('div');
+                welcomeMsg.className = 'message ai';
+                welcomeMsg.innerHTML = `<div class="message-content">👋 你好！我是王若素的AI助手。请问有什么可以帮助你的？可以问我关于AI项目、用户增长策略、工作流设计或跨界经历的任何问题。</div>`;
+                messagesDiv.appendChild(welcomeMsg);
+            }, 300);
+        });
+    </script>
+</body>
+</html>
