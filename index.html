@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王若素 · AI产品运营 · 作品集</title>
+    <title>王若素 · AI产品运营 · 客户成功 · 作品集</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
@@ -322,12 +322,10 @@
             border: 1px solid var(--border);
             background: var(--border);
         }
-
         .service-card {
             background: var(--white);
             padding: 28px;
         }
-
         .service-card h4 {
             font-size: 14px;
             font-weight: 600;
@@ -336,9 +334,7 @@
             padding-bottom: 12px;
             border-bottom: 1px solid var(--border-light);
         }
-
         .service-card ul { list-style: none; padding: 0; }
-
         .service-card li {
             color: var(--cold-gray-mid);
             margin-bottom: 8px;
@@ -347,7 +343,6 @@
             position: relative;
             line-height: 1.5;
         }
-
         .service-card li:before {
             content: "—";
             position: absolute;
@@ -355,6 +350,75 @@
             color: var(--border);
             font-size: 11px;
             top: 1px;
+        }
+        /* ── KANBAN BOARD (Notion-style) ── */
+        .kanban-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+        .kanban-column {
+            background: var(--very-light-gray);
+            border-radius: 4px;
+            padding: 16px;
+        }
+        .kanban-column-header {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--cold-gray);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .kanban-column-header .count {
+            background: var(--border);
+            color: var(--cold-gray-mid);
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        .kanban-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            transition: box-shadow 0.2s;
+            cursor: default;
+        }
+        .kanban-card:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .kanban-card .card-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--accent-blue);
+            margin-bottom: 6px;
+        }
+        .kanban-card .card-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--navy);
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+        .kanban-card .card-desc {
+            font-size: 12px;
+            color: var(--cold-gray);
+            line-height: 1.5;
+        }
+        @media (max-width: 768px) {
+            .kanban-board {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ── AI CHAT ── */
@@ -793,19 +857,19 @@
         <!-- ===================== 首页 ===================== -->
         <div id="home" class="section active">
             <div class="hero">
-                <div class="hero-eyebrow">AI产品运营 · 作品集</div>
-                <h1><strong>用AI工作流解决复杂信息整合问题</strong>用户增长 · 内容策略 · 数据驱动</h1>
+                <div class="hero-eyebrow">AI产品运营 · 客户成功 · 作品集</div>
+                <h1><strong>帮用户搞清楚 AI 到底怎么帮他</strong>介入工作流 · 减少时间 · 增加效能</h1>
                 <div class="hero-divider"></div>
                 <div class="skills" style="margin-bottom: 20px;">
-                    <span class="skill-tag">📊 20+ 跨学科项目交付</span>
+                    <span class="skill-tag">📊 20+ 付费客户 · 10+ 学科</span>
                     <span class="skill-tag">📈 8.4万 单篇内容触达</span>
-                    <span class="skill-tag">⭐ 1.98% 用户收藏率（同类均值0.8%）</span>
+                    <span class="skill-tag">⭐ 1.98% 收藏率（同类均值 0.8%）</span>
                 </div>
-                <p>建筑学背景 · CUHK硕士 · MBA在读。擅长将复杂AI能力翻译为小白可操作的方案，通过数据驱动用户激活与留存。</p>
+                <p>AI 深度用户——用过的不只是你公司的产品，还有竞品、国外产品、最新模型和 agent。建筑学出身，CUHK 硕士，MBA 在读。擅长把 AI 嵌入客户真实工作流，让他们少花时间、少走弯路。不是卖产品，是帮人用起来。</p>
                 <div class="skills">
                     <span class="skill-tag">🤖 AI工作流设计</span>
                     <span class="skill-tag">📊 用户增长实践</span>
-                    <span class="skill-tag">🔬 跨领域整合</span>
+                    <span class="skill-tag">🔬 跨领域快速切入</span>
                     <span class="skill-tag">📈 数据驱动决策</span>
                     <span class="skill-tag">🌍 双语 · 国际背景</span>
                 </div>
@@ -830,17 +894,21 @@
                 </ul>
                 <h3>我擅长三件事</h3>
                 <div class="skills" style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-                    <span class="skill-tag" style="font-size: 14px; padding: 10px 18px; width: 100%; box-sizing: border-box; text-align: left;">1. AI工作流设计 · 将多模型能力编排为标准化交付系统，降低用户使用门槛</span>
+                    <span class="skill-tag" style="font-size: 14px; padding: 10px 18px; width: 100%; box-sizing: border-box; text-align: left;">1. 把 AI 嵌入客户真实工作流 · 不是卖产品，是帮人用起来。减少时间、减少成本、增加效能。</span>
                     <span class="skill-tag" style="font-size: 14px; padding: 10px 18px; width: 100%; box-sizing: border-box; text-align: left;">2. 用户增长实践 · 通过内容驱动用户激活与留存，用数据验证产品迭代方向</span>
-                    <span class="skill-tag" style="font-size: 14px; padding: 10px 18px; width: 100%; box-sizing: border-box; text-align: left;">3. 跨领域整合 · 在复杂信息中提取核心框架，快速输出可落地解决方案</span>
+                    <span class="skill-tag" style="font-size: 14px; padding: 10px 18px; width: 100%; box-sizing: border-box; text-align: left;">3. 跨领域快速切入 · 给我一本规范，我能交付一个能用的结果。不管什么领域。</span>
                 </div>
                 <h3 style="margin-top: 40px;">工作经历</h3>
-                <p><strong>AI研究支持产品（独立负责）</strong> · 2024.09 – 至今<br>
-                独立设计AI工作流系统，协同Claude/GPT/Gemini/GLM多模型，完成跨10+学科20+项目交付，交付周期压缩80%。</p>
-                <p><strong>行政专员（跨部门流程优化）</strong> · 中铁十五局 · 2024.05 – 至今<br>
-                独立设计4套标准化SOP，协调3个部门同步推进，行政效率提升30%。审计80万+流水零差错。</p>
-                <p><strong>助理建筑师</strong> · 深圳华森建筑 · 2022.02 – 2023.06<br>
-                参与大型综合体项目施工图设计，获《华森绿色养老建筑》三等奖。</p>
+                <p><strong>AI 研究支持（独立运营）</strong> · 2024.09 – 至今<br>
+                独立设计多模型协作工作流，以批注反馈的方式辅导客户完成研究框架搭建——像老师改论文一样，提供 reference 和批注意见，学生自己写。已服务 20+ 付费客户，覆盖 10+ 学科，客户反馈交付周期从 2-3 周压缩至 2-3 天。</p>
+                <p><strong>行政专员（综合管理）</strong> · 中铁十五局 · 2024.05 – 至今<br>
+                独立负责 150+ 人项目的综合行政体系，覆盖劳资、后勤、合规、党建四大板块。主任交接工作时一点资料都拿不出来，下午培训完，当晚就把体系搭起来融入了我自己的工作流。设计 4 套 SOP，建立 12 类行政台账，管理 2100 万+年度工资系统，差错率从 5% 降至零。审计 80 万+流水零差错。兼任项目党建负责人（至 2025.09），独立完成党建全流程。</p>
+                <p><strong>办公室行政</strong> · 深圳元上教育 · 2023.07 – 2023.12<br>
+                组织开办线上培训课程，负责视频拍摄、剪辑、字幕校对全流程；运营公司公众号，分析用户行为数据优化内容漏斗。</p>
+                <p><strong>助理建筑师（项目协调）</strong> · 深圳华森建筑 · 2022.02 – 2023.06<br>
+                参与大型综合体项目设计协调，作为福清万华幼儿园项目专业负责人独立对接甲方与各专业团队；参与编纂《华森绿色养老建筑》获三等奖。</p>
+                <p><strong>跨项目支持</strong> · 2024 – 至今<br>
+                帮其他项目做公众号排版、P 图、文档排版。最离谱的一次：另一个项目需要通风系统计算，没人会。我完全不是暖通专业，就拿一本通风规范，对着逐条算出了风量、风压、管径。拿给通风工程师看，反馈是"还行，调整一下就能用"——后来他们只加了一两页，其他全用我的。</p>
                 <h3>教育背景</h3>
                 <p><strong>四川大学</strong>（985 · 211）MBA/EMBA · 2024 – 2027<br>
                 <em>研究方向：AI技术应用与用户增长策略</em></p>
@@ -873,8 +941,8 @@
                             <div class="entry-index">01</div>
                             <div class="entry-meta">
                                 <span class="entry-tag">AI产品 · 工作流设计</span>
-                                <div class="entry-title">AI研究支持系统：把多模型编排成标准化产品</div>
-                                <p class="entry-summary">用AI工作流解决跨学科知识整合效率低的问题。核心策略是模型分工——GPT负责广度、Claude负责深度、Gemini负责校验。交付周期从2-3周压缩至2-3天。</p>
+                                <div class="entry-title">AI 研究支持系统：像老师改论文一样，批注反馈</div>
+                                <p class="entry-summary">不是代写，是辅导。客户写，我批注——提供 reference 和研究框架，反馈文件是批注版本的。用 AI 工作流加速研究过程，交付周期从 2-3 周压缩至 2-3 天。</p>
                             </div>
                             <div class="entry-toggle">+</div>
                         </div>
@@ -901,8 +969,8 @@
                             <hr class="pf-divider">
                             <p class="pf-section-label">迭代历程</p>
                             <div class="pf-origin-box">
-                                <p><strong>V1（全自动）</strong>：输入需求 → AI 直接输出。效率高，但质量不稳定——AI 会编造文献、逻辑跳跃、结论经不起推敲。</p>
-                                <p><strong>V2（当前版本）</strong>：逐环节测试后定型。AI 负责广度、深度、校验，人工在需求理解、框架判断、最终审核三个节点把关。质量稳定，可跨学科复用。</p>
+                                <p><strong>V1（全自动）</strong>：输入需求 → AI 直接输出。效率高，但质量不稳定。我有个习惯——必须确认 AI 给我的信息是真实的。于是一条一条复核来源，发现大量虚假链接、空引用。AI 在编造。</p>
+                                <p><strong>V2（当前版本）</strong>：逐环节测试后定型。人工先把资料找好，确认每一篇文献真实存在，AI 负责分析和展示。人工在需求理解、资料来源、框架判断、最终审核四个节点把关。质量稳定，可跨学科复用。</p>
                             </div>
                             <hr class="pf-divider">
                             <p class="pf-section-label">结果</p>
@@ -948,6 +1016,10 @@
                             <p class="pf-text"><strong>单篇数据：</strong>8.4万浏览 · 2300+赞 · 1600+收藏 · 385评论<br>
                             <strong>收藏率：</strong>1.98%（同类均值0.8%） · <strong>收藏/点赞比：</strong>71%<br>
                             验证了"以价值驱动用户留存"的内容策略有效性。</p>
+                            <div style="margin: 20px 0; text-align: center;">
+                                <img src="xhs-post-detail.png" alt="小红书单篇数据：84,009浏览、2333赞、1662收藏" style="max-width: 320px; width: 100%; border: 1px solid var(--border); border-radius: 4px;">
+                                <p style="font-size: 11px; color: var(--cold-gray); margin-top: 8px;">▲ 单篇数据截图：84,009 浏览 · 2,333 赞 · 1,662 收藏</p>
+                            </div>
                             <hr class="pf-divider">
                             <div class="pf-meta-row">
                                 <div class="pf-meta-item"><span class="pf-meta-label">总触达</span><span class="pf-meta-value">8.4万 用户</span></div>
@@ -1039,13 +1111,12 @@
                         <p class="metric">✓ 切入新领域&lt;1个工作日</p>
                     </div>
                     <div class="case-card">
-                        <span class="tag">AI工具</span>
-                        <h4>文献综述工作流（防幻觉）</h4>
-                        <p><strong>问题：</strong>AI直接生成文献综述会编造假文献</p>
-                        <p><strong>方案：</strong>NotebookLM + 人工检索 + AI归纳三层隔离</p>
-                        <p class="metric">✓ 彻底杜绝AI幻觉文献</p>
-                        <p class="metric">✓ 流程可复用</p>
-                        <p style="font-size: 11px; color: var(--cold-gray); margin-top: 8px;">适用于研究者自查文献，确保引用真实可靠。非代写工具。</p>
+                        <span class="tag">跨领域</span>
+                        <h4>通风系统计算：给我一本规范就行</h4>
+                        <p><strong>问题：</strong>另一个项目需要通风计算，没人会做。</p>
+                        <p><strong>方案：</strong>非暖通专业，拿一本通风规范，逐条算出风量、风压、管径。</p>
+                        <p class="metric">✓ 工程师反馈："还行，调整一下就能用"</p>
+                        <p class="metric">✓ 最终版只加了一两页，其他全用我的</p>
                     </div>
                     <div class="case-card">
                         <span class="tag">项目管理</span>
@@ -1063,42 +1134,72 @@
         <div id="services" class="section">
             <div class="content">
                 <h2>方法论实践</h2>
-                <p style="margin-bottom: 32px; color: var(--cold-gray-mid);">以下是在跨学科研究与知识整合中积累的可复用方法——每一条都来自实际操作，而非理论推演。</p>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h4>🤖 AI工作流设计</h4>
-                        <ul>
-                            <li>多模型编排策略：GPT负责广度、Claude负责深度、Gemini负责校验</li>
-                            <li>标准化交付系统：从需求理解到内容输出的全链路设计</li>
-                            <li>人机协作，不是人机替代：AI 完全自动是不负责的——这也是为什么所有 AI 公司都需要行业专家。我的原则：AI 负责它擅长的，我在关键决策点把关。</li>
-                        </ul>
+                <p style="margin-bottom: 8px; color: var(--cold-gray-mid);">以下是在跨学科研究与知识整合中积累的可复用方法——每一条都来自实际操作，而非理论推演。</p>
+                <div class="kanban-board">
+                    <!-- 列一：AI 工作流设计 -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header">🤖 AI 工作流设计 <span class="count">3</span></div>
+                        <div class="kanban-card">
+                            <div class="card-label">模型编排</div>
+                            <div class="card-title">多模型分工策略</div>
+                            <div class="card-desc">GPT 广度扫描 + Claude 深度分析 + Gemini 交叉校验。按任务类型分配模型，不是简单堆叠。</div>
+                        </div>
+                        <div class="kanban-card">
+                            <div class="card-label">标准化</div>
+                            <div class="card-title">全链路交付系统</div>
+                            <div class="card-desc">从需求理解到内容输出，每一步都有标准动作。可复用、可迭代。</div>
+                        </div>
+                        <div class="kanban-card">
+                            <div class="card-label">人机协作</div>
+                            <div class="card-title">AI 负责它擅长的，我在关键节点把关</div>
+                            <div class="card-desc">AI 完全自动是不负责的——这也是为什么所有 AI 公司都需要行业专家。</div>
+                        </div>
                     </div>
-                    <div class="service-card">
-                        <h4>📈 用户增长与内容策略</h4>
-                        <ul>
-                            <li>解决方案导向定位：精准捕捉热点，拆解复杂内容为可操作指南</li>
-                            <li>数据驱动的增长验证：通过收藏率、转化路径优化迭代策略</li>
-                            <li>创作者社区运营：从0到1冷启动，验证用户留存路径</li>
-                        </ul>
+                    <!-- 列二：用户增长 -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header">📈 用户增长与内容 <span class="count">3</span></div>
+                        <div class="kanban-card">
+                            <div class="card-label">内容策略</div>
+                            <div class="card-title">解决方案导向定位</div>
+                            <div class="card-desc">拆解复杂技术为可操作指南。不贩卖焦虑，只提供解决方案。</div>
+                        </div>
+                        <div class="kanban-card">
+                            <div class="card-label">数据验证</div>
+                            <div class="card-title">收藏率驱动的增长验证</div>
+                            <div class="card-desc">通过收藏率、转化路径优化迭代策略。1.98% vs 同类 0.8%。</div>
+                        </div>
+                        <div class="kanban-card">
+                            <div class="card-label">冷启动</div>
+                            <div class="card-title">从 0 到 1 验证留存路径</div>
+                            <div class="card-desc">内容触达 → 用户收藏 → 持续关注。验证了完整的用户留存闭环。</div>
+                        </div>
                     </div>
-                    <div class="service-card">
-                        <h4>🔬 跨学科研究与知识整合</h4>
-                        <ul>
-                            <li>研究方法"反向工程"：从高引用论文倒推研究设计逻辑</li>
-                            <li>文献综述防幻觉流程：NotebookLM+人工检索+AI归纳三层隔离</li>
-                            <li>跨领域快速切入：覆盖8+学科，切入新领域通常不超过1个工作日</li>
-                        </ul>
-                    </div>
-                    <div class="service-card">
-                        <h4>🏢 运营流程与系统化</h4>
-                        <ul>
-                            <li>SOP设计与标准化：把"靠人记"变成"靠制度跑"</li>
-                            <li>可追溯体系搭建：计算过程、合同档案、触发机制全链路闭环</li>
-                            <li>质量管控机制：双人复核+定期抽检，差错率从5%降至0%</li>
-                        </ul>
+                    <!-- 列三：跨学科研究 -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header">🔬 跨学科快速切入 <span class="count">3</span></div>
+                        <div class="kanban-card">
+                            <div class="card-label">研究方法</div>
+                            <div class="card-title">反向工程</div>
+                            <div class="card-desc">从高引用论文倒推研究设计逻辑，而不是正向套用方法框架。</div>
+                        </div>
+                        <div class="kanban-card">
+                            <div class="card-label">操作流程</div>
+                            <div class="card-title">跨领域快速切入</div>
+                            <div class="card-desc">覆盖 10+ 学科，切入新领域通常不超过 1 个工作日。</div>
+                        </div>
+                        <div class="kanban-card">
+                            <div class="card-label">核心信念</div>
+                            <div class="card-title">给我一本规范，我能交付结果</div>
+                            <div class="card-desc">不管是建筑规范、通风规范、还是 AI 模型，快速切入陌生领域的方法论是相通的。</div>
+                        </div>
                     </div>
                 </div>
-                <!-- 工作方式段落已删除 -->
+                <div style="background: var(--white); border: 1px solid var(--border); padding: 24px; margin-bottom: 60px;">
+                    <h4 style="margin-top: 0; font-size: 14px; font-weight: 600; color: var(--navy); padding-bottom: 12px; border-bottom: 1px solid var(--border-light);">🏢 运营流程与系统化</h4>
+                    <p style="margin-bottom: 8px; color: var(--cold-gray-mid); font-size: 13px;">SOP 设计与标准化：把"靠人记"变成"靠制度跑"</p>
+                    <p style="margin-bottom: 8px; color: var(--cold-gray-mid); font-size: 13px;">可追溯体系搭建：计算过程、合同档案、触发机制全链路闭环</p>
+                    <p style="color: var(--cold-gray-mid); font-size: 13px;">质量管控：双人复核 + 定期抽检，差错率从 5% 降至 0%</p>
+                </div>
             </div>
         </div>
 
